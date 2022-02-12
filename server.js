@@ -53,7 +53,7 @@ app.use("/api/categories", categoriesRoutes(db));
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("./public/index");
 });
 
 app.listen(PORT, () => {
