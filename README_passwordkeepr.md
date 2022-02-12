@@ -11,14 +11,11 @@
 │   │   ├── 02_users.sql 
 │   │   ├── 03_categories.sql 
 │   │   └── 04_passwords.sql 
-│   ├── seeds
-│   │   ├── 01_organizations.sql 
-│   │   ├── 02_users.sql 
-│   │   ├── 03_categories.sql 
-│   │   └── 04_passwords.sql 
-├── docs
-│   ├── ERD.png
-│   └── user_stories.txt
+│   └── seeds
+│       ├── 01_organizations.sql 
+│       ├── 02_users.sql 
+│       ├── 03_categories.sql 
+│       └── 04_passwords.sql 
 ├── lib
 │   ├── db.js
 │   └── sass-middleware.js
@@ -35,18 +32,21 @@
 │   │   │   ├── registration_form.js
 │   │   │   └── search.js
 │   │   ├── app.js
+│   │   ├── database.js
 │   │   ├── network.js
 │   │   └── views_manager.js
-│   ├── styles
-│   │   │   └── .gitkeep
 │   ├── vendor
-│   │   │   ├── border-box.css
-│   │   │   ├── jquery-3.0.0.js
-│   │   │   └── normalize-4.1.1.css
-│   ├── index.html
-└── routes
-  ├── categories.js
-  ├── organizations.js
-  ├── passwords.js
-  └── users.js
+│   │       ├── border-box.css
+│   │       ├── jquery-3.0.0.js
+│   │       └── normalize-4.1.1.css
+│   └── index.html
+├── routes
+│   ├── categories.js
+│   ├── organizations.js
+│   ├── passwords.js
+│   └── users.js
+├── styles
+│   ├── layout.css
+│   └── main.css
+└── server.js
 ```
