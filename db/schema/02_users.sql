@@ -5,5 +5,6 @@ CREATE TABLE users (
   organization_id INTEGER REFERENCES organizations(id) ON DELETE CASCADE,
   full_name VARCHAR(255) NOT NULL,
   email VARCHAR(255),
-  password VARCHAR(255) NOT NULL
+  password VARCHAR(255) NOT NULL,
+  admin BOOLEAN NOT NULL
 );
