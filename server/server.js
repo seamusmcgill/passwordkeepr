@@ -38,27 +38,19 @@ app.use(express.static("public"));
 
 // /users endpoints
 const usersRoutes = require("../routes/users");
-const usersRouter = express.Router();
-usersRoutes(usersRouter, db);
-app.use("/users", usersRouter);
+app.use("/api/users", usersRoutes(db));
 
 // /passwords endpoints
 const passwordsRoutes = require("../routes/passwords");
-const passwordsRouter = express.Router();
-passwordsRoutes(passwordsRouter, db);
-app.use("/passwords", passwordsRouter);
+app.use("/api/passwords", passwordsRoutes(db));
 
 // /organizations endpoints
 const organizationsRoutes = require("../routes/organizations");
-const organizationsRouter = express.Router();
-organizationsRoutes(organizationsRouter, db);
-app.use("/organizations", organizationsRouter);
+app.use("/api/organizations", organizationsRoutes(db));
 
 // /categories endpoints
 const categoriesRoutes = require("../routes/categories");
-const categoriesRouter = express.Router();
-categoriesRoutes(categoriesRouter, db);
-app.use("/categories", categoriesRouter);
+app.use("/api/categories", categoriesRoutes(db));
 
 // Home page
 // Warning: avoid creating more routes in this file!
