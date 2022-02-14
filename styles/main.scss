@@ -1,17 +1,46 @@
-body {
+/* Color Palette: https://coolors.co/2a2b2e-5a5a66-a4c2a8-aceb98-87ff65 */
+
+section {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   min-height: 100vh;
+  padding-top: 120px;
+  background: #2A2B2E;
+  color: #87FF65;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+}
 
-  background: rgb(163, 208, 219);
-  background: linear-gradient(
-    227deg,
-    rgba(163, 208, 219, 1) 0%,
-    rgba(163, 176, 219, 1) 20%,
-    rgba(163, 173, 219, 1) 34%,
-    rgba(163, 219, 208, 1) 59%,
-    rgba(163, 208, 219, 1) 74%,
-    rgba(163, 208, 219, 1) 100%
-  );
+table, th, td {
+  border: 1px solid #A4C2A8;
+  border-collapse: collapse;
+  padding: 0.75em;
+}
+
+th {
+  font-weight: 600;
+  color: #ACEB98;
+}
+
+td {
+  color: #A4C2A8;
+  font-weight: 300;
+}
+
+nav {
+  display: flex;
+  position: fixed;
+  align-items: center;
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 1.5em;
+  height: 80px;
+  width: 100%;
+  background-color: #5A5A66;
+  color: #ACEB98;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
 }
