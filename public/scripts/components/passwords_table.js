@@ -11,7 +11,7 @@ $(document).ready(function() {
   </table>
   `;
 
-  $('body').append(tableHTML);
+  $('section').append(tableHTML);
 
   const getPasswords = () => {
     $.ajax({
