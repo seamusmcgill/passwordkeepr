@@ -2,12 +2,12 @@ $(document).ready(function() {
 
   const tableHTML = `
   <table>
-  <tr>
-  <th>Name</th>
-  <th>URL</th>
-  <th>Username</th>
-  <th>Password</th>
-  </tr>
+    <tr>
+      <th>Name</th>
+      <th>URL</th>
+      <th>Username</th>
+      <th>Password</th>
+    </tr>
   </table>
   `;
 

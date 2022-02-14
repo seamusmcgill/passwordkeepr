@@ -21,5 +21,26 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+  router.post("/", (req, res) => {
+    const newPasswordObject = req.body;
+    const parameters = [`${newPasswordObject.service_name}`, `${newPasswordObject.service_url}`, `${newPasswordObject.login_username}`, `${newPasswordObject.login_password}`, `${newPasswordObject.description}`];
+    db.query(`
+    INSERT INTO passwords
+      (organization_id, creator_id, service_name, service_url, login_username, login_password, description)
+    VALUES
+      (1, 1, $1, $2, $3, $4, $5)
+    RETURNING
+      *;
+    `, parameters)
+      .then(data => {
+        const response = data.rows;
+        console.log(response);
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
   return router;
 };

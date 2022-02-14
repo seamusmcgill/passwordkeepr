@@ -9,6 +9,7 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (db) => {
+
   router.get("/", (req, res) => {
     db.query(`SELECT * FROM categories;`)
       .then(data => {
@@ -21,5 +22,28 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
+  router.post("/", (req, res) => {
+    const newCategoryObject = req.body;
+    const parameters = [`${newCategoryObject.category_name}`, `${newCategoryObject.category_description}`];
+    db.query(`
+    INSERT INTO categories
+      (creator_id, name, description)
+    VALUES
+      (1, $1, $2)
+    RETURNING
+      *;
+    `, parameters)
+      .then(data => {
+        const response = data.rows;
+        console.log(response);
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
   return router;
 };
