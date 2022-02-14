@@ -21,5 +21,50 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
+  const getUserWithEmail = function(email) {
+    // Query database with user-inputted email
+    return db.query(`
+    SELECT *
+    FROM users
+    WHERE email = $1`, [email])
+      .then(result => {
+        if (result.rows.length === 0) {
+          return null;
+        }
+        // Return user object if successful
+        return result.rows[0];
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+
+  const login =  function(email, password) {
+    console.log(`Running login function with ${email} and ${password}`)
+    return getUserWithEmail(email)
+      .then(user => {
+        if (password === user.password) {
+          console.log("SUCCESSFUL LOGIN!");
+          return user;
+        }
+        return null;
+      });
+  };
+
+  router.post('/login', (req, res) => {
+
+    const {email, password} = req.body;
+    login(email, password)
+      .then(user => {
+        if (!user) {
+          res.send({error: "error"});
+          return;
+        }
+        res.send({user: {name: user.name, email: user.email, id: user.id}});
+      })
+      .catch(e => res.send(e));
+  });
+
   return router;
 };
