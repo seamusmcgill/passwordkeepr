@@ -31,12 +31,27 @@ $(document).ready(function() {
     });
   };
 
-  // Generate edit password form when edit button in passwords table is clicked
-  $(document).on("click", "[id^='edit-password-']", (event) => {
+  // On form submit send form data in an AJAX post request then render updated passwords table
+  $(document).on('submit', "[id^='edit-form-password-']", (event) => {
     event.preventDefault();
+
     let elementID = ($(event.target).attr("id"));
-    let passwordID = elementID.slice('edit-password-'.length);
-    getPassword(passwordID);
+    let passwordID = elementID.slice('edit-form-password-'.length);
+    let password = {
+      id: passwordID,
+      login_username: $(`#password-${passwordID}-login_username`).val(),
+      login_password: $(`#password-${passwordID}-login_password`).val(),
+      description: $(`#password-${passwordID}-description`).val(),
+    };
+
+    editPassword(password)
+      .then((res) => {
+        getPasswords()
+          .then((response) => {
+            $('section').empty().append(passwordsTable.tableHTML);
+            passwordsTable.renderPasswords(response);
+          });
+      });
   });
 
 
