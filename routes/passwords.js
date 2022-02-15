@@ -6,6 +6,7 @@
  */
 
 const express = require('express');
+const { reset } = require('nodemon');
 const router  = express.Router();
 
 module.exports = (db) => {
@@ -42,5 +43,21 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
+  router.get("/:passwordID", (req, res) => {
+    let passwordID = req.params.passwordID;
+    db.query(`SELECT * FROM passwords
+    WHERE ID = ${passwordID}`)
+      .then(data => {
+        const passwords = data.rows;
+        res.json({ passwords });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
   return router;
 };
