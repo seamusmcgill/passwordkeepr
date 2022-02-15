@@ -7,6 +7,7 @@ $(document).ready(function() {
       <th>URL</th>
       <th>Username</th>
       <th>Password</th>
+      <th>Edit</th>
     </tr>
   </table>
   `;
@@ -36,11 +37,16 @@ $(document).ready(function() {
       <td>${password.service_url} </td>
       <td>${password.login_username}</td>
       <td>${password.login_password}</td>
+      <td>
+        <a id="edit-password-${password.id}" href="#" role="button">Edit</a>
+      <td>
     </tr>
     `;
     return passwordHTML;
   };
 
   getPasswords();
+
+
 
 });
