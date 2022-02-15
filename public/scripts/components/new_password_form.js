@@ -37,14 +37,6 @@ $(document).ready(function() {
       description: $('#description').val()
     };
 
-    const postPassword = (data) => {
-      $.ajax({
-        method: 'POST',
-        url: '/api/passwords',
-        data
-      });
-    };
-
     postPassword(data)
       .then((response) => {
         console.log(response);
