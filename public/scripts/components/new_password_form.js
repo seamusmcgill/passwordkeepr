@@ -15,7 +15,8 @@ $(document).ready(function() {
         <label for="login_username">Username:</label>
         <input id="login_username" name="login_username" placeholder="Enter login username">
         <label for="login_password">Password:</label>
-        <input id="login_password" type="password" name="login_password" placeholder="Enter login password">
+        <input id="login_password" name="login_password" placeholder="Enter login password">
+        <button id="toggleGenerate" type="button">Generate</button>
         <label for="description">Description:</label>
         <input id="description" name="description" placeholder="What does the service do?">
         <button type="submit">Create</button>
@@ -94,5 +95,44 @@ $(document).ready(function() {
     return password;
 
   };
+
+  $('#toggleGenerate').on('click', (event => {
+    const generatePasswordFields = `
+      <form id="generatePasswordForm">
+        <input id="generatePasswordLength" name="generatePasswordLength" type="number" placeholder="Length">
+        <input id="generatePasswordIsUppercase" type="checkbox" name="generatePasswordIsUppercase" value="true">
+        <label for="generatePasswordIsUppercase">Uppercase?</label>
+        <input id="generatePasswordIsSpecialCharacter" type="checkbox" name="generatePasswordIsSpecialCharacter" value="true">
+        <label for="generatePasswordIsSpecialCharacter">Special Character?</label>
+        <button id="generatePasswordSubmit" type="button">Generate</button>
+      </form>
+    `;
+
+    $(generatePasswordFields).insertAfter('#toggleGenerate');
+    $('#toggleGenerate').hide();
+
+  }));
+
+  $('#newPasswordForm').on('click', '#generatePasswordSubmit', (event => {
+    const length = Number($('#generatePasswordLength').val());
+    let isUppercase;
+    if ($('#generatePasswordIsUppercase').is(':checked')) {
+      isUppercase = true;
+    } else {
+      isUppercase = false;
+    }
+    let isSpecial;
+    if ($('#generatePasswordIsSpecialCharacter').is(':checked')) {
+      isSpecial = true;
+    } else {
+      isSpecial = false;
+    }
+
+    $('#login_password').val(generatePassword(length, isUppercase, isSpecial));
+
+    $('#toggleGenerate').show();
+    $('#generatePasswordForm').remove();
+
+  }));
 
 });
