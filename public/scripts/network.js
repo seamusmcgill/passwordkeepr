@@ -19,3 +19,18 @@ const editPassword = (data) => {
     data,
   });
 };
+
+const getCategory = (categoryID) => {
+  return $.ajax({
+    method: 'GET',
+    url: `/api/categories/${categoryID}`,
+  });
+};
+
+const editCategory = (data) => {
+  return $.ajax({
+    method: 'POST',
+    url: `/api/categories/${data.id}`,
+    data,
+  });
+};
