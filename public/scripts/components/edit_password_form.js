@@ -22,15 +22,17 @@ $(document).ready(function() {
     $('section').append(generateEditPasswordForm(password));
   };
 
-  // Make a get request to retrieve password information then render password form
-  const getPassword = (passwordID) => {
-    $.ajax({
-      method: 'GET',
-      url: `/api/passwords/${passwordID}`,
-    }).then((response) => {
-      renderEditPasswordForm(response.passwords[0]);
-    });
-  };
+  // Generate edit password form when edit button in passwords table is clicked
+  $(document).on("click",  "[id^='edit-password-']", (event) => {
+    event.preventDefault();
+    let elementID = ($(event.target).attr("id"));
+    let passwordID = elementID.slice('edit-password-'.length);
+    // Make a get request to retrieve password information then render password form
+    getPassword(passwordID)
+      .then((response) => {
+        renderEditPasswordForm(response.passwords[0]);
+      });
+  });
 
   // On form submit send form data in an AJAX post request then render updated passwords table
   $(document).on('submit', "[id^='edit-form-password-']", (event) => {
