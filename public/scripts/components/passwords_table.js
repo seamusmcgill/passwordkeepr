@@ -39,7 +39,7 @@ $(document).ready(function() {
       <td>${password.login_password}</td>
       <td>
         <a id="edit-password-${password.id}" href="#" role="button">Edit</a>
-      <td>
+      </td>
     </tr>
     `;
     return passwordHTML;
