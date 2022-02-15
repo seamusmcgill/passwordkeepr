@@ -1,20 +1,20 @@
 $(() => {
 
-  $('section').empty();
 
   const $logInForm = $(`
-        <form id="login-form" class="login-form">
-          <div class="login-title>
-            <p>Login</p>
-          </div>
-          <div class="login-fields">
-            <input type="email" name="email" placeholder="Email">
-            <input type="password" name="password" placeholder="Password">
-            <button>Log In</button>
-          </div>
-        </form>
+  <form id="login-form" class="login-form">
+  <div class="login-title>
+  <p>Login</p>
+  </div>
+  <div class="login-fields">
+  <input type="email" name="email" placeholder="Email">
+  <input type="password" name="password" placeholder="Password">
+  <button>Log In</button>
+  </div>
+  </form>
   `);
 
+  $('section').empty();
   $('section').append($logInForm);
 
   $logInForm.on('submit', function(event) {

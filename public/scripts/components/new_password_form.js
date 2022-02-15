@@ -1,30 +1,31 @@
 $(document).ready(function() {
 
-  $('section').empty();
-
   const newPasswordHTML = `
   <div>
-    <h1>Create password</h1>
+  <h1>Create password</h1>
   </div>
   <div>
-    <form id="newPasswordForm">
-        <label for="service_name">Name:</label>
-        <input id="service_name" name="service_name" placeholder="Enter name of service">
-        <label for="service_url">URL:</label>
-        <input id="service_url" name="service_url" placeholder="Enter URL of service">
-        <label for="login_username">Username:</label>
-        <input id="login_username" name="login_username" placeholder="Enter login username">
-        <label for="login_password">Password:</label>
-        <input id="login_password" name="login_password" placeholder="Enter login password">
-        <button id="toggleGenerate" type="button">Generate</button>
-        <label for="description">Description:</label>
-        <input id="description" name="description" placeholder="What does the service do?">
-        <button type="submit">Create</button>
-    </form>
+  <form id="newPasswordForm">
+  <label for="service_name">Name:</label>
+  <input id="service_name" name="service_name" placeholder="Enter name of service">
+  <label for="service_url">URL:</label>
+  <input id="service_url" name="service_url" placeholder="Enter URL of service">
+  <label for="login_username">Username:</label>
+  <input id="login_username" name="login_username" placeholder="Enter login username">
+  <label for="login_password">Password:</label>
+  <input id="login_password" name="login_password" placeholder="Enter login password">
+  <button id="toggleGenerate" type="button">Generate</button>
+  <label for="description">Description:</label>
+  <input id="description" name="description" placeholder="What does the service do?">
+  <button type="submit">Create</button>
+  </form>
   </div>
   `;
 
-  $('section').append(newPasswordHTML);
+  $('#newPasswordLink').on('click', (event) => {
+    $('section').empty();
+    $('section').append(newPasswordHTML);
+  });
 
   $('#newPasswordForm').on('submit', (event => {
     event.preventDefault();
@@ -37,17 +38,6 @@ $(document).ready(function() {
       description: $('#description').val()
     };
 
-<<<<<<< HEAD
-=======
-    const postPassword = (data) => {
-      return $.ajax({
-        method: 'POST',
-        url: '/api/passwords',
-        data
-      });
-    };
-
->>>>>>> 0ea8cc4a1b61dd9d703026636f310ba11f7bc12d
     postPassword(data)
       .then((res) => {
         console.log(res);
