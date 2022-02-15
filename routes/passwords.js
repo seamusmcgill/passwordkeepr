@@ -71,9 +71,6 @@ module.exports = (db) => {
         res.json({ passwords });
       })
       .catch(err => {
-        console.log(`UPDATE passwords
-    SET login_username = ${username}, login_password = ${password}, description = ${description}
-    WHERE id = ${req.body.id};`);
         res
           .status(500)
           .json({ error: err.message });
