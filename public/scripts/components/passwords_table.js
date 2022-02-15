@@ -14,14 +14,8 @@ $(document).ready(function() {
 
   $('section').append(tableHTML);
 
-  const getPasswords = () => {
-    $.ajax({
-      method: 'GET',
-      url: '/api/passwords',
-    }).then((response) => {
-      renderPasswords(response);
-    });
-  };
+  window.passwordsTable = {};
+  window.passwordsTable.tableHTML = tableHTML;
 
   const renderPasswords = passwords => {
     const passwordsArray = passwords.passwords;
@@ -29,6 +23,8 @@ $(document).ready(function() {
       $('table').append(createPasswordElement(password));
     }
   };
+
+  window.passwordsTable.renderPasswords = renderPasswords;
 
   const createPasswordElement = password => {
     const passwordHTML = `
@@ -38,14 +34,19 @@ $(document).ready(function() {
       <td>${password.login_username}</td>
       <td>${password.login_password}</td>
       <td>
-        <a id="edit-password-${password.id}" href="#" role="button">Edit</a>
-      <td>
+        <a id="edit-password-${password.id}" href="#">Edit</a>
+      </td>
     </tr>
     `;
     return passwordHTML;
   };
 
-  getPasswords();
+  window.passwordsTable.createPasswordElement = createPasswordElement;
+
+  getPasswords()
+    .then((response) => {
+      renderPasswords(response);
+    });
 
 
 
