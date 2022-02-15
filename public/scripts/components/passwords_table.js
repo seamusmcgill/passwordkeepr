@@ -5,6 +5,7 @@ $(document).ready(function() {
     <tr>
       <th>Name</th>
       <th>URL</th>
+      <th>Category</th>
       <th>Username</th>
       <th>Password</th>
       <th>Edit</th>
@@ -30,7 +31,10 @@ $(document).ready(function() {
     const passwordHTML = `
     <tr>
       <td>${password.service_name}</td>
-      <td>${password.service_url} </td>
+      <td>
+        <a href="${password.service_url}">${password.service_url}</a>
+      </td>
+      <td><a class="category-${password.category_id}" href="#">${password.category_name}</a></td>
       <td>${password.login_username}</td>
       <td>${password.login_password}</td>
       <td>

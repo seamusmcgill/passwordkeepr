@@ -11,7 +11,9 @@ const router  = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    db.query(`SELECT * FROM passwords;`)
+    db.query(`SELECT passwords.id, service_name, service_url, login_username, login_password, passwords.description,
+    categories.id AS category_id, categories.name AS category_name, categories.description AS category_description
+    FROM passwords JOIN categories ON categories.id = category_id;`)
       .then(data => {
         const passwords = data.rows;
         res.json({ passwords });

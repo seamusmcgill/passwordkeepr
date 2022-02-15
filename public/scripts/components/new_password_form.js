@@ -38,7 +38,7 @@ $(document).ready(function() {
     };
 
     const postPassword = (data) => {
-      $.ajax({
+      return $.ajax({
         method: 'POST',
         url: '/api/passwords',
         data
@@ -46,8 +46,8 @@ $(document).ready(function() {
     };
 
     postPassword(data)
-      .then((response) => {
-        console.log(response);
+      .then((res) => {
+        console.log(res);
       });
 
 
