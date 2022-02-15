@@ -59,5 +59,23 @@ module.exports = (db) => {
       });
   });
 
+  router.post("/:passwordID", (req, res) => {
+    let username = req.body.login_username;
+    let password = req.body.login_password;
+    let description = req.body.description;
+    db.query(`UPDATE passwords
+    SET login_username = '${username}', login_password = '${password}', description = '${description}'
+    WHERE id = ${req.body.id};`)
+      .then(data => {
+        const passwords = data.rows;
+        res.json({ passwords });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
   return router;
 };

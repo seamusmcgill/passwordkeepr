@@ -45,5 +45,37 @@ module.exports = (db) => {
       });
   });
 
+  router.get("/:categoryID", (req, res) => {
+    let categoryID = req.params.categoryID;
+    db.query(`SELECT * FROM categories
+    WHERE ID = ${categoryID}`)
+      .then(data => {
+        const category = data.rows;
+        res.json({ category });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
+  router.post("/:categoryID", (req, res) => {
+    let name = req.body.name;
+    let description = req.body.description;
+    db.query(`UPDATE categories
+    SET name = '${name}', description = '${description}'
+    WHERE id = ${req.body.id};`)
+      .then(data => {
+        const passwords = data.rows;
+        res.json({ passwords });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
   return router;
 };
