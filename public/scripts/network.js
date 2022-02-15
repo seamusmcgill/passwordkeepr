@@ -12,6 +12,14 @@ const getPassword = (passwordID) => {
   });
 };
 
+const postPassword = (data) => {
+  return $.ajax({
+    method: 'POST',
+    url: '/api/passwords',
+    data
+  });
+};
+
 const editPassword = (data) => {
   return $.ajax({
     method: 'POST',
@@ -34,3 +42,4 @@ const editCategory = (data) => {
     data,
   });
 };
+
