@@ -3,14 +3,15 @@ $(document).ready(function() {
   // Template for the edit password form
   const generateEditPasswordForm = (password) => {
     return `
-      <form id="editPasswordForm">
+      <form id="edit-form-password-${password.id}">
       <p>Edit Password for ${password.service_name}</p>
-          <input id="login_username" name="login_username" placeholder="${password.login_username}">
-          <label for="login_password">Password:</label>
-          <input id="login_password" type="password" name="login_password" placeholder="${password.login_password}">
-          <label for="description">Description:</label>
-          <input id="description" name="description" placeholder="What does the service do?">
-          <button type="submit">Create</button>
+          <label for="password-${password.id}-login_username">Username:</label>
+          <input id="password-${password.id}-login_username" name="login_username" value="${password.login_username}">
+          <label for="password-${password.id}-login_password">Password:</label>
+          <input id="password-${password.id}-login_password" type="password" name="login_password" value="${password.login_password}">
+          <label for="password-${password.id}-description">Description:</label>
+          <input id="password-${password.id}-description" name="description" value="${password.description}">
+          <button type="submit">Edit</button>
       </form>
     `;
   };
