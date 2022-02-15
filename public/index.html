@@ -20,6 +20,8 @@
   <script type="text/javascript" src="/scripts/components/new_category_form.js"></script>
   <script type="text/javascript" src="/scripts/components/login_form.js"></script> -->
   <script type="text/javascript" src="/scripts/components/edit_password_form.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
 </head>
 
 <body>
@@ -29,9 +31,21 @@
       <p>+Add</p>
     </div>
   </nav>
-  <section>
+ <section>
     <!-- THIS IS WHERE MOST IS BEING INSERTED -->
   </section>
-</body>
 
+  <div class="container">
+    <div class= "copy-text">
+      <input type="text" class="text"
+      value= "andrew seamus"id="myInput">
+     <button onclick="myFunction()">
+     <!-- <i class="fa fa-clone"></i> -->
+     </button>
+    </div>
+    </div>
+
+    <input type="text" value="Hello World" id="myInput">  <!-- The button used to copy the text --> <button onclick="myFunction()">Copy text</button>
+
+</body>
 </html>

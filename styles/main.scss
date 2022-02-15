@@ -44,3 +44,83 @@ nav {
   font-family: 'JetBrains Mono', monospace;
   font-weight: 600;
 }
+
+.container {
+  position: absolute;
+  top:70%;
+  left:50%;
+  transform:translate(-50%,-50%);
+}
+
+.label{
+  padding:10px;
+  font-size:18px;
+  color:#ACEB98;
+}
+
+.copy-text {
+  position: relative;
+  padding:10px;
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius:10px;
+  display:flex;
+}
+
+.copy-text input.text {
+  padding:10px;
+  font-size:18px;
+  color: #555;
+  border:none;
+  outline:none;
+}
+
+
+.copy-text button{
+  padding:10px;
+  background: #ACEB98;
+  color: #fff;
+  font-size:18px;
+  border:none;
+  outline:none;
+  border-radius:10px;
+  cursor: pointer;
+}
+
+.copy-text button:active {
+  background:#4a803a;
+}
+
+.copy-text button:before{
+  content: "copied";
+  position: absolute;
+  top:-45px;
+  right:0px;
+  background:#ACEB98;
+  padding:8px, 10px;
+  border-radius:20px;
+  font-size:15px;
+  display:none;
+}
+
+.copy-text button:after{
+  content:"";
+  position:absolute;
+  top: -20px;
+  right: 25px;
+  width: 10px;
+  height: 10px;
+  background: #aceb98;
+  transform: rotate(45deg);
+  display: none;
+}
+
+.copy-text.active button:before,
+.copy-text.active button:after {
+  display:block;
+}
+
+
+
+
+
