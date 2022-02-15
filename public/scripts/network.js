@@ -20,6 +20,13 @@ const editPassword = (data) => {
   });
 };
 
+const getCategories = () => {
+  return $.ajax({
+    method: 'GET',
+    url: '/api/categories'
+  });
+};
+
 const getCategory = (categoryID) => {
   return $.ajax({
     method: 'GET',
