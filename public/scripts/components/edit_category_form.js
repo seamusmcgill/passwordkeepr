@@ -20,22 +20,17 @@ $(document).ready(function() {
     $('section').append(generateEditCategoryForm(category));
   };
 
-  getCategory(1)
+  // Generate edit category form when edit button in categories table is clicked
+  $(document).on("click",  "[class^='category-']", (event) => {
+    event.preventDefault();
+    let elementClass = ($(event.target).attr("class"));
+    let categoryID = elementClass.slice('category-'.length);
+    // Make a get request to retrieve category information then render category form
+    getCategory(categoryID)
       .then((response) => {
         renderEditCategoryForm(response.category[0]);
       });
-
-  // // Generate edit category form when edit button in categories table is clicked
-  // $(document).on("click",  "[id^='edit-category-']", (event) => {
-  //   event.preventDefault();
-  //   let elementID = ($(event.target).attr("id"));
-  //   let categoryID = elementID.slice('edit-category-'.length);
-  //   // Make a get request to retrieve category information then render category form
-  //   getCategory(categoryID)
-  //     .then((response) => {
-  //       renderEditCategoryForm(response.categorys[0]);
-  //     });
-  // });
+  });
 
   // On form submit send form data in an AJAX post request then render updated categorys table
   $(document).on('submit', "[id^='edit-form-category-']", (event) => {
