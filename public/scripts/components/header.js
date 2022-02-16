@@ -24,6 +24,7 @@ $(() => {
         <a id="newCategoryLink" href="#">+Category</a>
         <a id="newPasswordLink" href="#">+Password</a>
         <p>Logged in as ${user.name}, ${user.organization}</p>
+        <a id="logOutButton" href="#">Logout</a>
       </div>
       `;
     }
@@ -31,12 +32,40 @@ $(() => {
     $navBar.append(userLinks);
   };
 
+  window.$navBar = $navBar;
   window.header.update = updateHeader;
 
   getCurrentUser()
     .then(( json ) => {
       updateHeader(json.user);
     });
+
+  $navBar.on('click', '#homepage', (event) => {
+    event.preventDefault();
+
+    getPasswords()
+      .then((response) => {
+        passwords.renderPasswords(response);
+        viewsManager.show('passwords');
+      });
+  });
+
+  $navBar.on('click', '#newCategoryLink', (event) => {
+    event.preventDefault();
+    viewsManager.show('newCategory');
+  });
+
+  $navBar.on('click', '#newPasswordLink', (event) => {
+    event.preventDefault();
+    viewsManager.show('newPassword');
+  });
+
+  $navBar.on("click", "#logOutButton", () => {
+    logOut().then(() => {
+      updateHeader(null);
+      viewsManager.show('login');
+    });
+  });
 
   // $("header").on("click", '.my_reservations_button', function() {
   //   propertyListings.clearListings();
@@ -84,4 +113,3 @@ $(() => {
   // $('header').on('click', '.create_listing_button', function() {
   //   views_manager.show('newProperty');
 });
-
