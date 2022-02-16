@@ -89,7 +89,7 @@ $(document).ready(function() {
 
   };
 
-  $('#toggleGenerate').on('click', (event => {
+  $('body').on('click', '#toggleGenerate', (event => {
     const generatePasswordFields = `
       <form id="generatePasswordForm">
         <input id="generatePasswordLength" name="generatePasswordLength" type="number" placeholder="Length">
@@ -106,7 +106,7 @@ $(document).ready(function() {
 
   }));
 
-  $('#newPasswordForm').on('click', '#generatePasswordSubmit', (event => {
+  $('body').on('click', '#generatePasswordSubmit', (event => {
     const length = Number($('#generatePasswordLength').val());
     let isUppercase;
     if ($('#generatePasswordIsUppercase').is(':checked')) {
