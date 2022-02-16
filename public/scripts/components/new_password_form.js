@@ -1,24 +1,25 @@
+/* eslint-disable camelcase */
 $(document).ready(function() {
 
   const newPasswordHTML = `
   <div>
-  <h1>Create password</h1>
+    <h1>Create password</h1>
   </div>
   <div>
-  <form id="newPasswordForm">
-  <label for="service_name">Name:</label>
-  <input id="service_name" name="service_name" placeholder="Enter name of service">
-  <label for="service_url">URL:</label>
-  <input id="service_url" name="service_url" placeholder="Enter URL of service">
-  <label for="login_username">Username:</label>
-  <input id="login_username" name="login_username" placeholder="Enter login username">
-  <label for="login_password">Password:</label>
-  <input id="login_password" name="login_password" placeholder="Enter login password">
-  <button id="toggleGenerate" type="button">Generate</button>
-  <label for="description">Description:</label>
-  <input id="description" name="description" placeholder="What does the service do?">
-  <button type="submit">Create</button>
-  </form>
+    <form id="newPasswordForm">
+      <label for="service_name">Name:</label>
+      <input id="service_name" name="service_name" placeholder="Enter name of service">
+      <label for="service_url">URL:</label>
+      <input id="service_url" name="service_url" placeholder="Enter URL of service">
+      <label for="login_username">Username:</label>
+      <input id="login_username" name="login_username" placeholder="Enter login username">
+      <label for="login_password">Password:</label>
+      <input id="login_password" name="login_password" placeholder="Enter login password">
+      <button id="toggleGenerate" type="button">Generate</button>
+      <label for="description">Description:</label>
+      <input id="description" name="description" placeholder="What does the service do?">
+      <button type="submit">Create</button>
+    </form>
   </div>
   `;
 
@@ -38,6 +39,7 @@ $(document).ready(function() {
       description: $('#description').val()
     };
 
+    // eslint-disable-next-line no-undef
     postPassword(data)
       .then((res) => {
         console.log(res);

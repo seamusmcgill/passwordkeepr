@@ -9,6 +9,7 @@ $(document).ready(function() {
       <th>Username</th>
       <th>Password</th>
       <th>Edit</th>
+      <th>Copy</th>
     </tr>
   </table>
   `;
@@ -41,6 +42,7 @@ $(document).ready(function() {
         <td>
           <a id="edit-password-${password.id}" href="#">Edit</a>
         </td>
+        <td><i class="fa-solid fa-clone"></i></td>
       </tr>
       `;
       return passwordHTML;

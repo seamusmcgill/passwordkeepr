@@ -7,14 +7,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- Styles -->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/main.css" type="text/css" />
   <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
   <!-- JavaScript -->
-  <script type="text/javascript" src="/scripts/network.js"></script>
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/network.js"></script>
   <script type="text/javascript" src="/scripts/views_manager.js"></script>
   <script type="text/javascript" src="/scripts/components/passwords_table.js"></script>
   <script type="text/javascript" src="/scripts/components/new_password_form.js"></script>
@@ -41,7 +44,10 @@
     <div class= "copy-text">
       <input type="text" class="text"
       value= "andrew seamus"id="myInput">
-     <button onclick="myFunction()">
+     <!-- <button id="copyTextButton" onclick="myFunction()">
+     <i class="fa fa-clone"></i> -->
+     <!-- </button> -->
+     <button id="copyTextButton">
      <!-- <i class="fa fa-clone"></i> -->
      </button>
     </div>
