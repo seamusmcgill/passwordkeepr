@@ -23,6 +23,12 @@ $(() => {
     case 'editCategory':
       $editCategoryForm.appendTo('section');
       break;
+    case 'registration':
+      $registrationForm.appendTo('section');
+      break;
+    case 'login':
+      $logInForm.appendTo('section');
+      break;
     case 'error': {
       const $error = $(`<p>${arguments[1]}</p>`);
       $error.appendTo('body');
