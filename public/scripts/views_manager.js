@@ -2,21 +2,33 @@ $(() => {
 
   const $body = $('body');
 
-  window.views_manager = {};
+  window.viewsManager = {};
 
-  window.views_manager.show = function(item) {
-    $passwordList.detach();
+  window.viewsManager.show = function(item) {
+    $('section').empty();
 
     switch (item) {
     case 'passwords':
-      $passwordList.appendTo($body);
+      $passwordsTable.appendTo('section');
+      break;
+    case 'newPassword':
+      $newPasswordHTML.appendTo('section');
+      break;
+    case 'editPassword':
+      $editPasswordForm.appendTo('section');
+      break;
+    case 'newCategory':
+      $newCategoryHTML.appendTo('section');
+      break;
+    case 'editCategory':
+      $editCategoryForm.appendTo('section');
       break;
     case 'error': {
       const $error = $(`<p>${arguments[1]}</p>`);
       $error.appendTo('body');
       setTimeout(() => {
         $error.remove();
-        views_manager.show('listings');
+        viewsManager.show('listings');
       }, 2000);
 
       break;
