@@ -45,7 +45,9 @@ $(document).ready(function() {
       </td>
       <td><a class="category-${password.category_id}" href="#">${password.category_name || ""}</a></td>
       <td>${password.login_username}</td>
-      <td id="password-entry-${password.id}">${password.login_password}</td>
+      <td id="password-entry-${password.id}">
+      ${passTableStrongCheck(password.login_password, password.id)}
+      </td>
       <td>
         <a id="edit-password-${password.id}" href="#">Edit</a>
       </td>
@@ -70,6 +72,7 @@ $(document).ready(function() {
   });
 
   $('body').on('click', "[id^='copy-password-']", (event => {
+    if (window.isSecureMode) return;
     let elementID;
     if (!($(event.target).attr("id"))) {
       elementID = ($(event.target).parent().attr("id"));
