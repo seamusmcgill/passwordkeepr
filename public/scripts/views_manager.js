@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 $(() => {
 
   const $body = $('body');
@@ -34,6 +35,6 @@ $(() => {
       break;
     }
     }
-};
+  };
 
 });

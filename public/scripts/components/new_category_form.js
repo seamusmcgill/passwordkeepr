@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 $(document).ready(function() {
 
   const $newCategoryHTML = $(`
@@ -19,6 +20,7 @@ $(document).ready(function() {
 
   $('#newCategoryLink').on('click', (event) => {
     event.preventDefault();
+    // eslint-disable-next-line no-undef
     viewsManager.show('newCategory');
   });
 

@@ -45,11 +45,11 @@ $(document).ready(function() {
       </td>
       <td><a class="category-${password.category_id}" href="#">${password.category_name || ""}</a></td>
       <td>${password.login_username}</td>
-      <td>${password.login_password}</td>
+      <td id="password-entry-${password.id}">${password.login_password}</td>
       <td>
         <a id="edit-password-${password.id}" href="#">Edit</a>
       </td>
-      <td><i class="fa-solid fa-clone"></i></td>
+      <td id="copy-password-${password.id}"><i class="fa-solid fa-clone"></i></td>
     </tr>
     `;
     return passwordHTML;
@@ -60,12 +60,25 @@ $(document).ready(function() {
   $('#homepage').on('click', (event) => {
     event.preventDefault();
 
+    // eslint-disable-next-line no-undef
     getPasswords()
       .then((response) => {
         renderPasswords(response);
+        // eslint-disable-next-line no-undef
         viewsManager.show('passwords');
       });
   });
 
+  $('body').on('click', "[id^='copy-password-']", (event => {
+    let elementID;
+    if (!($(event.target).attr("id"))) {
+      elementID = ($(event.target).parent().attr("id"));
+    } else {
+      elementID = ($(event.target).attr("id"));
+    }
+    const passwordID = elementID.slice('copy-password-'.length);
+    // eslint-disable-next-line no-undef
+    copyToClipboard(`#password-entry-${passwordID}`);
+  }));
 
 });

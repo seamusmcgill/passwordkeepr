@@ -42,16 +42,17 @@ $(document).ready(function() {
 
   $('#newPasswordLink').on('click', (event) => {
     event.preventDefault();
+    // eslint-disable-next-line no-undef
     viewsManager.show('newPassword');
 
     $('#toggleGenerate').on('click', (event => {
-
       $($generatePasswordFields).insertAfter('#toggleGenerate');
       $('#toggleGenerate').hide();
 
     }));
 
-    $('#newPasswordForm').on('click', '#generatePasswordSubmit', (event => {
+    $('body').on('click', '#generatePasswordSubmit', (event => {
+      console.log('this part is working');
       const length = Number($('#generatePasswordLength').val());
       let isUppercase;
       if ($('#generatePasswordIsUppercase').is(':checked')) {
@@ -66,6 +67,7 @@ $(document).ready(function() {
         isSpecial = false;
       }
 
+      // eslint-disable-next-line no-undef
       $('#login_password').val(generatePassword(length, isUppercase, isSpecial));
 
       $('#toggleGenerate').show();
@@ -89,9 +91,12 @@ $(document).ready(function() {
     // eslint-disable-next-line no-undef
     postPassword(data)
       .then((res) => {
+        // eslint-disable-next-line no-undef
         getPasswords()
           .then((response) => {
+            // eslint-disable-next-line no-undef
             passwords.renderPasswords(response);
+            // eslint-disable-next-line no-undef
             viewsManager.show('passwords');
           });
       });

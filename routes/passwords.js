@@ -13,7 +13,8 @@ module.exports = (db) => {
   router.get("/", (req, res) => {
     db.query(`SELECT passwords.id, service_name, service_url, login_username, login_password, passwords.description,
     categories.id AS category_id, categories.name AS category_name, categories.description AS category_description
-    FROM passwords LEFT OUTER JOIN categories ON categories.id = category_id;`)
+    FROM passwords LEFT OUTER JOIN categories ON categories.id = category_id
+    ORDER BY passwords.id;`)
       .then(data => {
         const passwords = data.rows;
         res.json({ passwords });
