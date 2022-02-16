@@ -38,12 +38,17 @@ $(document).ready(function() {
     } else {
       userLinks = `
       <a id="homepage" href="#">PasswordKeepR</a>
-      <div>
-        <a id="secureMode" href="#">Secure Mode OFF</a>
-        <a id="newCategoryLink" href="#">+Category</a>
-        <a id="newPasswordLink" href="#">+Password</a>
-        <p>Logged in as ${user.name}, ${user.organization}</p>
-        <a id="logOutButton" href="#">Logout</a>
+      <div id="nav-right">
+        <div>
+          <a id="secureMode" href="#">Secure Mode OFF</a>
+          <a id="newCategoryLink" href="#">+Category</a>
+          <a id="newPasswordLink" href="#">+Password</a>
+          <a id="logOutButton" href="#">Logout</a>
+        </div>
+        <div>
+          <p>Logged in as ${user.name}</p>
+          <p>${user.organization}</p>
+        </div>
       </div>
       `;
     }
