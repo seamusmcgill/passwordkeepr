@@ -66,5 +66,29 @@ module.exports = (db) => {
       .catch(e => res.send(e));
   });
 
+  router.post('/new', (req, res) => {
+
+    const userObject = req.body;
+    const parameters = [`${userObject.full_name}`, `${userObject.organization_id}`, `${userObject.email}`, `${userObject.password}`];
+    db.query(`
+    INSERT INTO users
+      (full_name, organization_id, email, password)
+    VALUES
+      ($1, $2, $3, $4)
+    RETURNING
+      *;
+    `, parameters)
+      .then(data => {
+        const response = data.rows;
+        console.log(response);
+        res.json({ response });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
+
   return router;
 };
