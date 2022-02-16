@@ -9,6 +9,8 @@
 
 $(document).ready(function() {
 
+  viewsManager.show('logIn');
+
   const copyToClipboard = (elementID) => {
     navigator.clipboard.writeText($(elementID).val());
     return $(elementID).val();
