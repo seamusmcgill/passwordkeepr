@@ -14,6 +14,13 @@ const createUser = (data) => {
   });
 };
 
+const getCurrentUser = () => {
+  return $.ajax({
+    method: 'GET',
+    url: '/api/users/current'
+  });
+};
+
 const  getOrganizations = () => {
   return $.ajax({
     method: 'GET',
