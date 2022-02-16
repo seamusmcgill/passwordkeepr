@@ -2,7 +2,7 @@ $(document).ready(function() {
 
   // Template for the edit category form
   const generateEditCategoryForm = (category) => {
-    return `
+    return $(`
       <form id="edit-form-category-${category.id}">
       <p>Edit ${category.name} Category</p>
           <label for="category-${category.id}-name">Name:</label>
@@ -11,13 +11,7 @@ $(document).ready(function() {
           <input id="category-${category.id}-description" name="description" value="${category.description}">
           <button type="submit">Edit</button>
       </form>
-    `;
-  };
-
-  // Render the category form and append it to the section
-  const renderEditCategoryForm = category => {
-    $('section').empty();
-    $('section').append(generateEditCategoryForm(category));
+    `);
   };
 
   // Generate edit category form when edit button in categories table is clicked
@@ -25,10 +19,13 @@ $(document).ready(function() {
     event.preventDefault();
     let elementClass = ($(event.target).attr("class"));
     let categoryID = elementClass.slice('category-'.length);
-    // Make a get request to retrieve category information then render category form
+
+    // Make a get request to retrieve category information then render category form with views manager
     getCategory(categoryID)
       .then((response) => {
-        renderEditCategoryForm(response.category[0]);
+        let category = response.category[0];
+        window.$editCategoryForm = generateEditCategoryForm(category);
+        viewsManager.show('editCategory');
       });
   });
 
@@ -48,8 +45,8 @@ $(document).ready(function() {
       .then((res) => {
         getPasswords()
           .then((response) => {
-            $('section').empty().append(passwordsTable.tableHTML);
-            passwordsTable.renderPasswords(response);
+            passwords.renderPasswords(response);
+            viewsManager.show('passwords');
           });
       });
   });

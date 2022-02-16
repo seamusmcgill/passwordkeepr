@@ -2,7 +2,7 @@ $(document).ready(function() {
 
   // Template for the edit password form
   const generateEditPasswordForm = (password) => {
-    return `
+    return $(`
       <form id="edit-form-password-${password.id}">
       <p>Edit Password for ${password.service_name}</p>
           <label for="password-${password.id}-login_username">Username:</label>
@@ -13,13 +13,7 @@ $(document).ready(function() {
           <input id="password-${password.id}-description" name="description" value="${password.description}">
           <button type="submit">Edit</button>
       </form>
-    `;
-  };
-
-  // Render the password form and append it to the section
-  const renderEditPasswordForm = password => {
-    $('section').empty();
-    $('section').append(generateEditPasswordForm(password));
+    `);
   };
 
   // Generate edit password form when edit button in passwords table is clicked
@@ -30,7 +24,9 @@ $(document).ready(function() {
     // Make a get request to retrieve password information then render password form
     getPassword(passwordID)
       .then((response) => {
-        renderEditPasswordForm(response.passwords[0]);
+        let password = response.passwords[0];
+        window.$editPasswordForm = generateEditPasswordForm(password);
+        viewsManager.show('editPassword');
       });
   });
 
@@ -51,8 +47,8 @@ $(document).ready(function() {
       .then((res) => {
         getPasswords()
           .then((response) => {
-            $('section').empty().append(passwordsTable.tableHTML);
-            passwordsTable.renderPasswords(response);
+            passwords.renderPasswords(response);
+            viewsManager.show('passwords');
           });
       });
   });
