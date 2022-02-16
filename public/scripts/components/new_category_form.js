@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-  const $newCategoryHTML = `
+  const $newCategoryHTML = $(`
   <div>
   <h1>Create category</h1>
   </div>
@@ -13,12 +13,13 @@ $(document).ready(function() {
   <button type="submit">Create</button>
   </form>
   </div>
-  `;
+  `);
 
+  window.$newCategoryHTML = $newCategoryHTML;
 
   $('#newCategoryLink').on('click', (event) => {
-    $('section').empty();
-    $('section').append($newCategoryHTML);
+    event.preventDefault();
+    viewsManager.show('newCategory');
   });
 
   $('#newCategoryForm').on('submit', (event => {
