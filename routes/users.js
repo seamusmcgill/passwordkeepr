@@ -67,20 +67,25 @@ module.exports = (db) => {
       });
   };
 
+  // ROUTE FOR LOGGING USERS IN
   router.post('/login', (req, res) => {
 
     const {email, password} = req.body;
-    login(email, password)
+    loginUser(email, password)
       .then(user => {
         if (!user) {
           res.send({error: "error"});
           return;
         }
-        res.send({user: {name: user.name, email: user.email, id: user.id}});
+        req.session.userId = user.id;
+        console.log("Logged in user is: ", req.session.userId);
+        res.send({user: {name: user.full_name, email: user.email, organization: user.organization_name, id: user.id}});
       })
       .catch(e => res.send(e));
   });
 
+
+  // ROUTE FOR CREATING NEW USER
   router.post('/new', (req, res) => {
 
     const userObject = req.body;
