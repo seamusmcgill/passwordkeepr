@@ -1,3 +1,26 @@
+const logIn = (data) => {
+  return $.ajax({
+    method: "POST",
+    url: "/api/users/login",
+    data
+  });
+};
+
+const createUser = (data) => {
+  return $.ajax({
+    method: "POST",
+    url: "/api/users/new",
+    data
+  });
+};
+
+const  getOrganizations = () => {
+  return $.ajax({
+    method: 'GET',
+    url: '/api/organizations',
+  });
+}
+
 const getPasswords = () => {
   return $.ajax({
     method: 'GET',
