@@ -25,7 +25,7 @@ $(() => {
     }
   };
 
-  $('#registerLink').on('click', (event) => {
+  $navBar.on('click', '#registerLink', (event) => {
     event.preventDefault();
 
     viewsManager.show('registration');
@@ -49,6 +49,7 @@ $(() => {
 
     createUser(data)
       .then(res => {
+        header.update(res.user);
         getPasswords()
           .then((response) => {
             passwords.renderPasswords(response);

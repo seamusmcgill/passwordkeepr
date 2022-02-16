@@ -18,12 +18,6 @@ $(document).ready(function() {
 
   window.$newCategoryHTML = $newCategoryHTML;
 
-  $('#newCategoryLink').on('click', (event) => {
-    event.preventDefault();
-    // eslint-disable-next-line no-undef
-    viewsManager.show('newCategory');
-  });
-
   $('#newCategoryForm').on('submit', (event => {
     event.preventDefault();
 

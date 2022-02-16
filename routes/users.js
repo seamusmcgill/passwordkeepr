@@ -25,9 +25,28 @@ module.exports = (db) => {
   const getUserWithEmail = function(email) {
     // Query database with user-inputted email
     return db.query(`
-    SELECT *
-    FROM users
+    SELECT users.full_name, users.email, users.id, users.password, organizations.name AS organization_name
+    FROM users JOIN organizations ON users.organization_id = organizations.id
     WHERE email = $1`, [email])
+      .then(result => {
+        console.log(result.rows[0]);
+        if (result.rows.length === 0) {
+          return null;
+        }
+        // Return user object if successful
+        return result.rows[0];
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+
+  const getUserWithId = function(id) {
+    // Query database for a user with a specific ID
+    return db.query(`
+    SELECT users.full_name, users.email, users.id, organizations.name AS organization_name
+    FROM users JOIN organizations ON users.organization_id = organizations.id
+    WHERE users.id = $1`, [id])
       .then(result => {
         if (result.rows.length === 0) {
           return null;
@@ -40,8 +59,7 @@ module.exports = (db) => {
       });
   };
 
-  const login =  function(email, password) {
-    console.log(`Running login function with ${email} and ${password}`)
+  const loginUser  =  function(email, password) {
     return getUserWithEmail(email)
       .then(user => {
         if (password === user.password) {
@@ -52,20 +70,25 @@ module.exports = (db) => {
       });
   };
 
+  // ROUTE FOR LOGGING USERS IN
   router.post('/login', (req, res) => {
 
     const {email, password} = req.body;
-    login(email, password)
+    loginUser(email, password)
       .then(user => {
         if (!user) {
           res.send({error: "error"});
           return;
         }
-        res.send({user: {name: user.name, email: user.email, id: user.id}});
+        req.session.userId = user.id;
+        console.log("Logged in user is: ", req.session.userId);
+        res.send({user: {name: user.full_name, email: user.email, organization: user.organization_name, id: user.id}});
       })
       .catch(e => res.send(e));
   });
 
+
+  // ROUTE FOR CREATING NEW USER
   router.post('/new', (req, res) => {
 
     const userObject = req.body;
@@ -79,9 +102,12 @@ module.exports = (db) => {
       *;
     `, parameters)
       .then(data => {
-        const response = data.rows;
-        console.log(response);
-        res.json({ response });
+        const user = data.rows[0];
+        req.session.userId = user.id;
+        getUserWithId(user.id)
+          .then(user => {
+            res.json({user: {name: user.full_name, email: user.email, organization: user.organization_name, id: user.id}});
+          });
       })
       .catch(err => {
         res
@@ -90,5 +116,31 @@ module.exports = (db) => {
       });
   });
 
+  // ROUTE TO CHECK FOR LOGGED IN USER
+  router.get("/current", (req, res) => {
+    const userId = req.session.userId;
+    if (!userId) {
+      res.send({message: "not logged in"});
+      return;
+    }
+
+    getUserWithId(userId)
+      .then(user => {
+        if (!user) {
+          res.send({error: "no user with that id"});
+          return;
+        }
+
+        res.send({user: {name: user.full_name, email: user.email, organization: user.organization_name, id: userId}});
+      })
+      .catch(e => res.send(e));
+  });
+
+  router.post('/logout', (req, res) => {
+    req.session.userId = null;
+    res.send({});
+  });
+
   return router;
+
 };

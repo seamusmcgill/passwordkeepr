@@ -6,11 +6,25 @@ const logIn = (data) => {
   });
 };
 
+const logOut = () => {
+  return $.ajax({
+    method: "POST",
+    url: "api/users/logout",
+  });
+};
+
 const createUser = (data) => {
   return $.ajax({
     method: "POST",
     url: "/api/users/new",
     data
+  });
+};
+
+const getCurrentUser = () => {
+  return $.ajax({
+    method: 'GET',
+    url: '/api/users/current'
   });
 };
 

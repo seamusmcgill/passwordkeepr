@@ -16,16 +16,23 @@ $(() => {
 
   window.$logInForm = $logInForm;
 
-  $('section').empty();
-  $('section').append($logInForm);
+  // $('section').empty();
+  // $('section').append($logInForm);
 
   $logInForm.on('submit', function(event) {
     event.preventDefault();
 
     const data = $(this).serialize();
-    console.log("DATA IS: ", data);
 
-    logIn(data);
+    logIn(data)
+      .then(res => {
+        header.update(res.user);
+        getPasswords()
+          .then(res => {
+            passwords.renderPasswords(res);
+            viewsManager.show('passwords');
+          });
+      });
 
   });
 
