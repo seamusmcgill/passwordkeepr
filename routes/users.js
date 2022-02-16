@@ -40,8 +40,23 @@ module.exports = (db) => {
       });
   };
 
-  const login =  function(email, password) {
-    console.log(`Running login function with ${email} and ${password}`)
+  const getUserWithId = function(id) {
+    // Query database for a user with a specific ID
+    return db.query(`
+    SELECT users.full_name, users.email, users.id, organizations.name AS organization_name
+    FROM users JOIN organizations ON users.organization_id = organizations.id
+    WHERE users.id = $1`, [id])
+      .then(result => {
+        if (result.rows.length === 0) {
+          return null;
+        }
+        // Return user object if successful
+        return result.rows[0];
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
     return getUserWithEmail(email)
       .then(user => {
         if (password === user.password) {
