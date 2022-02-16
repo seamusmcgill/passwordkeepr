@@ -40,40 +40,38 @@ $(document).ready(function() {
         </form>
       `);
 
-  $('#newPasswordLink').on('click', (event) => {
-    event.preventDefault();
-    viewsManager.show('newPassword');
 
-    $('#toggleGenerate').on('click', (event => {
 
-      $($generatePasswordFields).insertAfter('#toggleGenerate');
-      $('#toggleGenerate').hide();
+  $(document).on('click', '#toggleGenerate', (event => {
 
-    }));
+    $($generatePasswordFields).insertAfter('#toggleGenerate');
+    $('#toggleGenerate').hide();
 
-    $('#newPasswordForm').on('click', '#generatePasswordSubmit', (event => {
-      const length = Number($('#generatePasswordLength').val());
-      let isUppercase;
-      if ($('#generatePasswordIsUppercase').is(':checked')) {
-        isUppercase = true;
-      } else {
-        isUppercase = false;
-      }
-      let isSpecial;
-      if ($('#generatePasswordIsSpecialCharacter').is(':checked')) {
-        isSpecial = true;
-      } else {
-        isSpecial = false;
-      }
+  }));
 
-      $('#login_password').val(generatePassword(length, isUppercase, isSpecial));
+  $(document).on('click', '#generatePasswordSubmit', (event => {
+    const length = Number($('#generatePasswordLength').val());
+    let isUppercase;
+    if ($('#generatePasswordIsUppercase').is(':checked')) {
+      isUppercase = true;
+    } else {
+      isUppercase = false;
+    }
+    let isSpecial;
+    if ($('#generatePasswordIsSpecialCharacter').is(':checked')) {
+      isSpecial = true;
+    } else {
+      isSpecial = false;
+    }
 
-      $('#toggleGenerate').show();
-      $('#generatePasswordForm').remove();
+    $('#login_password').val(generatePassword(length, isUppercase, isSpecial));
 
-    }));
+    $('#toggleGenerate').show();
+    $('#generatePasswordForm').remove();
 
-  });
+  }));
+
+
 
   $(document).on('submit', '#newPasswordForm', (event => {
     event.preventDefault();

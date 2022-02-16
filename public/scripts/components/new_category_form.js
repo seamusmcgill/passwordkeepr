@@ -17,11 +17,6 @@ $(document).ready(function() {
 
   window.$newCategoryHTML = $newCategoryHTML;
 
-  $('#newCategoryLink').on('click', (event) => {
-    event.preventDefault();
-    viewsManager.show('newCategory');
-  });
-
   $('#newCategoryForm').on('submit', (event => {
     event.preventDefault();
 
