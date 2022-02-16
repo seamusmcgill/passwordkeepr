@@ -38,6 +38,7 @@ module.exports = (db) => {
       .then(data => {
         const response = data.rows;
         console.log(response);
+        res.json({ response });
       })
       .catch(err => {
         res
