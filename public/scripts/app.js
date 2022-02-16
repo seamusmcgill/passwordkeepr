@@ -47,3 +47,16 @@ const copyToClipboard = (elementID) => {
   navigator.clipboard.writeText($(elementID).text());
   return $(elementID).text();
 };
+
+const passTableStrongCheck = (password, id) => {
+  if (window.isSecureMode) {
+    let output = `<a id="strong-password-${id}" href="#">`;
+    password.split('').forEach(char => {
+      output += '●';
+    });
+    output += `</a>`;
+    return output;
+  }
+  return password;
+
+};
