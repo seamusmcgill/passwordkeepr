@@ -72,7 +72,7 @@ $(document).ready(function() {
   });
 
   $('body').on('click', "[id^='copy-password-']", (event => {
-    if (window.isSecureMode) return;
+
     let elementID;
     if (!($(event.target).attr("id"))) {
       elementID = ($(event.target).parent().attr("id"));
@@ -80,8 +80,61 @@ $(document).ready(function() {
       elementID = ($(event.target).attr("id"));
     }
     const passwordID = elementID.slice('copy-password-'.length);
+    if (window.isSecureMode && $(`#password-entry-${passwordID}`).html().includes('●')) return;
     // eslint-disable-next-line no-undef
     copyToClipboard(`#password-entry-${passwordID}`);
+  }));
+
+  // SECURE MODE
+  $('body').on('click', "[id^='strong-password-']", (event => {
+    $('.container').remove();
+    const elementID = $(event.target).attr("id");
+    const passwordID = elementID.slice('strong-password-'.length);
+
+    const authentication = `
+    <div class="container">
+    <p class="close-window">x</p>
+    <input id="secure-mode-auth-input" name="secure-mode-auth-input" type="password" placeholder="Enter your password">
+    <button id="secure-mode-auth-button-${passwordID}" type=button>Verify</button>
+    </div>
+    `;
+    $('body').append(authentication);
+  }));
+
+  $('body').on('click', "[id^='secure-mode-auth-button']", (event => {
+    // retrieve the user-entered password
+    const password = $('#secure-mode-auth-input').val();
+    // retrieve the logged in user's email
+    getCurrentUser()
+      .then((json) => {
+        const data = {
+          email: json.user.email,
+          password: password
+        };
+        // verify the user (via users.js and network.js), including the email and password to be tested as a param object
+        verifyUser(data)
+          .then(res => {
+            // if it's not a match according to the DB, hide the window and do not show the password
+            if (!res) {
+              $('.container').remove();
+              return;
+            }
+            $('.container').remove();
+            // should probably move this to a function, it's a mess
+            // if it is a match, reveal the password
+            const elementID = $(event.target).attr("id");
+            const passwordID = elementID.slice('secure-mode-auth-button-'.length);
+            getPassword(passwordID)
+              .then((response) => {
+                let password = response.passwords[0];
+                $(`#password-entry-${passwordID}`).html(`${password.login_password}`);
+              });
+          });
+      });
+  }));
+
+  $('body').on('click', '.close-window', (event => {
+    $('.container').remove();
   }));
 
 });

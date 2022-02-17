@@ -28,6 +28,14 @@ const getCurrentUser = () => {
   });
 };
 
+const verifyUser = (data) => {
+  return $.ajax({
+    method: 'POST',
+    url: '/api/users/verify',
+    data
+  });
+};
+
 const  getOrganizations = () => {
   return $.ajax({
     method: 'GET',

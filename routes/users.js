@@ -6,6 +6,7 @@
  */
 
 const express = require('express');
+const { param } = require('express/lib/request');
 const router  = express.Router();
 
 module.exports = (db) => {
@@ -134,6 +135,21 @@ module.exports = (db) => {
         res.send({user: {name: user.full_name, email: user.email, organization: user.organization_name, id: userId}});
       })
       .catch(e => res.send(e));
+  });
+
+  // ROUTE TO VERIFY LOGGED IN USER ON SECURE MODE
+  router.post("/verify", (req, res) => {
+    // console.log(`Routing req.body is`, req.body);
+    const parameters = [`${req.body.email}`];
+    db.query(`
+    SELECT password
+    FROM users
+    WHERE email = $1
+    `, parameters)
+      .then(result => {
+        if (result.rows[0].password === req.body.password) return res.send(true);
+        return res.send(false);
+      });
   });
 
   router.post('/logout', (req, res) => {

@@ -51,9 +51,13 @@ nav {
 
 .container {
   position: absolute;
-  top:70%;
+  top:25%;
   left:50%;
   transform:translate(-50%,-50%);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  background-color: #000000;
+  padding: 1.5em 1.5em;
 }
 
 .label{
@@ -131,6 +135,25 @@ nav {
   align-items: center;
 }
 
+#secure-mode-auth-button {
+  background-color: #313131;
+  color: #ACEB98;
+}
+
+#secure-mode-auth-input {
+  background-color: #313131;
+  color: #ACEB98;
+}
+
+.close-window {
+  color: #ACEB98;
+  display: inline;
+  border: 1px solid;
+}
+
+.close-window:hover {
+  cursor: pointer;
+}
 
 
 
