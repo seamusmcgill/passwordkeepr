@@ -19,6 +19,17 @@ $(document).ready(function() {
   // Generate edit password form when edit button in passwords table is clicked
   $(document).on("click",  "[id^='edit-password-']", (event) => {
     event.preventDefault();
+    if (window.isSecureMode) {
+      $('.container').remove();
+      const authentication = `
+      <div class="container">
+      <p class="close-window">x</p>
+      <h4>You must turn secure mode off to edit passwords</h4>
+      </div>
+      `;
+      $('body').append(authentication);
+      return;
+    }
     let elementID = ($(event.target).attr("id"));
     let passwordID = elementID.slice('edit-password-'.length);
     // Make a get request to retrieve password information then render password form
