@@ -14,7 +14,6 @@ $(document).ready(function() {
   const $tableHeader = $(`
     <tr id="table-header">
       <th>Name</th>
-      <th>URL</th>
       <th>Category</th>
       <th>Username</th>
       <th>Password</th>
@@ -39,19 +38,16 @@ $(document).ready(function() {
   const createPasswordElement = password => {
     const passwordHTML = `
     <tr>
-      <td>${password.service_name}</td>
       <td>
-        <a href="${password.service_url}">${password.service_url}</a>
+        <a href="${password.service_url}">${password.service_name}</a>
       </td>
       <td><a class="category-${password.category_id}" href="#">${password.category_name || ""}</a></td>
       <td>${password.login_username}</td>
-      <td id="password-entry-${password.id}">
-      ${passTableStrongCheck(password.login_password, password.id)}
-      </td>
+      <td>${password.login_password}</td>
       <td>
         <a id="edit-password-${password.id}" href="#">Edit</a>
       </td>
-      <td id="copy-password-${password.id}"><i class="fa-solid fa-clone"></i></td>
+      <td><i class="fa-solid fa-clone"></i></td>
     </tr>
     `;
     return passwordHTML;
@@ -59,29 +55,5 @@ $(document).ready(function() {
 
   window.passwords.createPasswordElement = createPasswordElement;
 
-  $('#homepage').on('click', (event) => {
-    event.preventDefault();
-
-    // eslint-disable-next-line no-undef
-    getPasswords()
-      .then((response) => {
-        renderPasswords(response);
-        // eslint-disable-next-line no-undef
-        viewsManager.show('passwords');
-      });
-  });
-
-  $('body').on('click', "[id^='copy-password-']", (event => {
-    if (window.isSecureMode) return;
-    let elementID;
-    if (!($(event.target).attr("id"))) {
-      elementID = ($(event.target).parent().attr("id"));
-    } else {
-      elementID = ($(event.target).attr("id"));
-    }
-    const passwordID = elementID.slice('copy-password-'.length);
-    // eslint-disable-next-line no-undef
-    copyToClipboard(`#password-entry-${passwordID}`);
-  }));
 
 });
