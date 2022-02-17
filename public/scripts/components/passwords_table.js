@@ -55,7 +55,6 @@ $(document).ready(function() {
 
   window.passwords.createPasswordElement = createPasswordElement;
 
-<<<<<<< HEAD
   $('#homepage').on('click', (event) => {
     event.preventDefault();
 
@@ -81,8 +80,6 @@ $(document).ready(function() {
     // eslint-disable-next-line no-undef
     copyToClipboard(`#password-entry-${passwordID}`);
   }));
-=======
->>>>>>> 2c1c618b8b528f7bb66a92b6e94a7aedf9fe7c2b
 
   // SECURE MODE
   $('body').on('click', "[id^='strong-password-']", (event => {
