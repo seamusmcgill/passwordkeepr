@@ -9,9 +9,9 @@ $(() => {
       <input type="email" name="email" id="email" placeholder="Email">
       <input type="password" name="password" id="password" placeholder="Password">
     </div>
-    <div class="organization-options">
-      <button id="join-organization">Join Organization</button>
-      <button id="create-organization">Create Organization</button>
+    <div class="organization-options grid">
+      <button id="join-organization" role="button">Join Organization</button>
+      <button id="create-organization" role="button">Create Organization</button>
     </div>
     <button>Register</button>
   </form>
