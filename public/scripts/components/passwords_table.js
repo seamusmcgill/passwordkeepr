@@ -43,11 +43,13 @@ $(document).ready(function() {
       </td>
       <td><a class="category-${password.category_id}" href="#">${password.category_name || ""}</a></td>
       <td>${password.login_username}</td>
-      <td>${password.login_password}</td>
+      <td id="password-entry-${password.id}">
+      ${passTableStrongCheck(password.login_password, password.id)}
+      </td>
       <td>
         <a id="edit-password-${password.id}" href="#">Edit</a>
       </td>
-      <td><i class="fa-solid fa-clone"></i></td>
+      <td id="copy-password-${password.id}"><i class="fa-solid fa-clone"></i></td>
     </tr>
     `;
     return passwordHTML;
