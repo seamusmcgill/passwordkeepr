@@ -20,9 +20,9 @@ $(document).ready(function() {
   $(document).on("click",  "[id^='edit-password-']", (event) => {
     event.preventDefault();
     if (window.isSecureMode) {
-      $('.container').remove();
+      $('.secure-mode-popup').remove();
       const authentication = `
-      <div class="container">
+      <div class="secure-mode-popup">
       <p class="close-window">x</p>
       <h4>You must turn secure mode off to edit passwords</h4>
       </div>

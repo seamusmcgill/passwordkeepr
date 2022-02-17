@@ -10,135 +10,6 @@
 }
 
 nav {
-<<<<<<< HEAD
-  display: flex;
-  position: fixed;
-  align-items: center;
-  z-index: 2;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 0 1.5em;
-  height: 80px;
-  width: 100%;
-  background-color: #5A5A66;
-  color: #ACEB98;
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 600;
-}
-
-.container {
-  position: absolute;
-  top:25%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 600;
-  background-color: #000000;
-  padding: 1.5em 1.5em;
-}
-
-.container h4 {
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 600;
-  color: #ACEB98;
-}
-
-.label{
-  padding:10px;
-  font-size:18px;
-  color:#ACEB98;
-}
-
-.copy-text {
-  position: relative;
-  padding:10px;
-  background:#fff;
-  border:1px solid #ddd;
-  border-radius:10px;
-  display:flex;
-}
-
-.copy-text input.text {
-  padding:10px;
-  font-size:18px;
-  color: #555;
-  border:none;
-  outline:none;
-}
-
-
-.copy-text button{
-  padding:10px;
-  background: #ACEB98;
-  color: #fff;
-  font-size:18px;
-  border:none;
-  outline:none;
-  border-radius:10px;
-  cursor: pointer;
-}
-
-.copy-text button:active {
-  background:#4a803a;
-}
-
-.copy-text button:before{
-  content: "copied";
-  position: absolute;
-  top:-45px;
-  right:0px;
-  background:#ACEB98;
-  padding:8px, 10px;
-  border-radius:20px;
-  font-size:15px;
-  display:none;
-}
-
-.copy-text button:after{
-  content:"";
-  position:absolute;
-  top: -20px;
-  right: 25px;
-  width: 10px;
-  height: 10px;
-  background: #aceb98;
-  transform: rotate(45deg);
-  display: none;
-}
-
-.copy-text.active button:before,
-.copy-text.active button:after {
-  display:block;
-}
-
-#nav-right {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-#secure-mode-auth-button {
-  background-color: #313131;
-  color: #ACEB98;
-}
-
-#secure-mode-auth-input {
-  background-color: #313131;
-  color: #ACEB98;
-}
-
-.close-window {
-  color: #ACEB98;
-  display: inline;
-  border: 1px solid;
-}
-
-.close-window:hover {
-  cursor: pointer;
-}
-=======
   padding: 0 1em 0 1em;
   --primary: #FFF;
   --primary-hover: #C8C8C8;
@@ -208,16 +79,16 @@ nav  img {
 //   background-color: lightgray;
 // }
 
-// // .container {
-// //   position: absolute;
-// //   top:25%;
-// //   left:50%;
-// //   transform:translate(-50%,-50%);
-// //   font-family: 'JetBrains Mono', monospace;
-// //   font-weight: 600;
-// //   background-color: #000000;
-// //   padding: 1.5em 1.5em;
-// // }
+.secure-mode-popup {
+  position: absolute;
+  top:25%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  background-color: #000000;
+  padding: 1.5em 1.5em;
+}
 
 // .label{
 //   padding:10px;
@@ -313,7 +184,6 @@ nav  img {
 // .close-window:hover {
 //   cursor: pointer;
 // }
->>>>>>> 28-incorporate-css-framework
 
 
 

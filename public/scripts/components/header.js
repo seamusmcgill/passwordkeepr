@@ -94,9 +94,9 @@ $(document).ready(function() {
     event.preventDefault();
     // If secure mode is on
     if (window.isSecureMode) {
-      $('.container').remove();
+      $('.secure-mode-popup').remove();
       const authentication = `
-      <div class="container">
+      <div class="secure-mode-popup">
       <h4>TURN SECURE MODE OFF<h4>
       <p class="close-window">x</p>
       <input id="secure-mode-auth-input" name="secure-mode-auth-input" type="password" placeholder="Enter your password">
