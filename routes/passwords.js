@@ -19,7 +19,7 @@ module.exports = (db) => {
     JOIN organizations ON passwords.organization_id = organizations.id
     JOIN users ON users.organization_id = organizations.id
     WHERE users.organization_id = $1
-    GROUP BY users.organization_id
+    GROUP BY users.organization_id, passwords.id, categories.id
     ORDER BY passwords.id;`, parameters)
       .then(data => {
         const passwords = data.rows;
