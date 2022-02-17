@@ -41,7 +41,15 @@ const  getOrganizations = () => {
     method: 'GET',
     url: '/api/organizations',
   });
-}
+};
+
+const createOrganization = (data) => {
+  return $.ajax({
+    method: 'POST',
+    url: '/api/organizations',
+    data
+  });
+};
 
 const getPasswords = () => {
   return $.ajax({
