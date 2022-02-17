@@ -9,6 +9,7 @@ $(() => {
           .then((response) => {
             passwords.renderPasswords(response);
             viewsManager.show('passwords');
+            displayCategories();
           });
       } else {
         viewsManager.show('login');
