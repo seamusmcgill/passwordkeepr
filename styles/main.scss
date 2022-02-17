@@ -79,6 +79,22 @@ nav  img {
 //   background-color: lightgray;
 // }
 
+#search-container {
+  margin-top: 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#passwords-table-search {
+  width: 50%;
+}
+
+#homepage {
+  font-family: 'Arvo', serif;
+}
+
+
 .secure-mode-popup {
   position: absolute;
   top:25%;

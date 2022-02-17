@@ -18,8 +18,8 @@ $(document).ready(function() {
       <th scope="col">Category</th>
       <th scope="col">Username</th>
       <th scope="col">Password</th>
-      <th scope="col">Edit</th>
-      <th scope="col">Copy</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
     </tr>
   </thead>
   `);
@@ -45,7 +45,7 @@ $(document).ready(function() {
 
   const createPasswordElement = password => {
     const passwordHTML = `
-    <tr>
+    <tr class="table-row">
       <td scope="row">
         <a href="${password.service_url}">${password.service_name}</a>
       </td>
