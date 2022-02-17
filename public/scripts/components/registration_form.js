@@ -41,7 +41,6 @@ $(() => {
       let $organizationOption = $(`<option value='${organization.id}'>${organization.name}</option>`);
       $organizationSelect.append($organizationOption);
     }
-    console.log("ORGANIZATIONSELECT", $organizationSelect.html());
     $organizationSelect.appendTo(".organization-options");
   };
 

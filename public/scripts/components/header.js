@@ -23,7 +23,6 @@ $(document).ready(function() {
   let currentUser = null;
   const updateHeader = (user) => {
     currentUser = user;
-    console.log(user);
     $navBar.empty();
 
     let userLinks;
