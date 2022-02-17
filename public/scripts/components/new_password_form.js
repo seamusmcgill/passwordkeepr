@@ -88,12 +88,16 @@ $(document).ready(function() {
     postPassword(data)
       .then((res) => {
         // eslint-disable-next-line no-undef
-        getPasswords()
-          .then((response) => {
-            // eslint-disable-next-line no-undef
-            passwords.renderPasswords(response);
-            // eslint-disable-next-line no-undef
-            viewsManager.show('passwords');
+        getCurrentUser()
+          .then((json) => {
+            const data = {
+              organizationID: json.user.organizationID,
+            };
+            getPasswords(data)
+              .then((response) => {
+                passwords.renderPasswords(response);
+                viewsManager.show('passwords');
+              });
           });
       });
 

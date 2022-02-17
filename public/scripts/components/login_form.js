@@ -27,10 +27,16 @@ $(() => {
     logIn(data)
       .then(res => {
         header.update(res.user);
-        getPasswords()
-          .then(res => {
-            passwords.renderPasswords(res);
-            viewsManager.show('passwords');
+        getCurrentUser()
+          .then((json) => {
+            const data = {
+              organizationID: json.user.organizationID,
+            };
+            getPasswords(data)
+              .then((response) => {
+                passwords.renderPasswords(response);
+                viewsManager.show('passwords');
+              });
           });
       });
 

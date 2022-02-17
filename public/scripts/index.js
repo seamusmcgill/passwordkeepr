@@ -2,7 +2,10 @@ $(() => {
   getCurrentUser()
     .then((json) => {
       if (json.user) {
-        getPasswords()
+        const data = {
+          organizationID: json.user.organizationID,
+        };
+        getPasswords(data)
           .then((response) => {
             passwords.renderPasswords(response);
             viewsManager.show('passwords');

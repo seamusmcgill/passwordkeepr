@@ -43,10 +43,16 @@ $(document).ready(function() {
 
     editCategory(category)
       .then((res) => {
-        getPasswords()
-          .then((response) => {
-            passwords.renderPasswords(response);
-            viewsManager.show('passwords');
+        getCurrentUser()
+          .then((json) => {
+            const data = {
+              organizationID: json.user.organizationID,
+            };
+            getPasswords(data)
+              .then((response) => {
+                passwords.renderPasswords(response);
+                viewsManager.show('passwords');
+              });
           });
       });
   });

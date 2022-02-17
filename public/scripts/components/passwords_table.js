@@ -57,18 +57,6 @@ $(document).ready(function() {
 
   window.passwords.createPasswordElement = createPasswordElement;
 
-  $('#homepage').on('click', (event) => {
-    event.preventDefault();
-
-    // eslint-disable-next-line no-undef
-    getPasswords()
-      .then((response) => {
-        renderPasswords(response);
-        // eslint-disable-next-line no-undef
-        viewsManager.show('passwords');
-      });
-  });
-
   $('body').on('click', "[id^='copy-password-']", (event => {
 
     let elementID;
@@ -157,10 +145,16 @@ $(document).ready(function() {
             $('.container').remove();
             window.isSecureMode = false;
             $('#secureMode').html(`Secure Mode OFF`);
-            getPasswords()
-              .then((response) => {
-                renderPasswords(response);
-                viewsManager.show('passwords');
+            getCurrentUser()
+              .then((json) => {
+                const data = {
+                  organizationID: json.user.organizationID,
+                };
+                getPasswords(data)
+                  .then((response) => {
+                    renderPasswords(response);
+                    viewsManager.show('passwords');
+                  });
               });
           });
       });

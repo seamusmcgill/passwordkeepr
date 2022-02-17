@@ -51,10 +51,11 @@ const createOrganization = (data) => {
   });
 };
 
-const getPasswords = () => {
+const getPasswords = (data) => {
   return $.ajax({
     method: 'GET',
     url: '/api/passwords',
+    data
   });
 };
 

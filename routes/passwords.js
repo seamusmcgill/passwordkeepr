@@ -11,10 +11,14 @@ const router  = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
+    console.log(req.query.organizationID);
+    const parameters = [`${req.query.organizationID}`];
     db.query(`SELECT passwords.id, service_name, service_url, login_username, login_password, passwords.description,
     categories.id AS category_id, categories.name AS category_name, categories.description AS category_description
     FROM passwords LEFT OUTER JOIN categories ON categories.id = category_id
-    ORDER BY passwords.id;`)
+    JOIN users ON passwords.creator_id = users.id
+    WHERE users.organization_id = $1
+    ORDER BY passwords.id;`, parameters)
       .then(data => {
         const passwords = data.rows;
         res.json({ passwords });

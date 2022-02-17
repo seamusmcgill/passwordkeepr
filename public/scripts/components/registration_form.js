@@ -91,10 +91,16 @@ $(() => {
           createUser(data)
             .then(res => {
               header.update(res.user);
-              getPasswords()
-                .then((response) => {
-                  passwords.renderPasswords(response);
-                  viewsManager.show('passwords');
+              getCurrentUser()
+                .then((json) => {
+                  const data = {
+                    organizationID: json.user.organizationID,
+                  };
+                  getPasswords(data)
+                    .then((response) => {
+                      passwords.renderPasswords(response);
+                      viewsManager.show('passwords');
+                    });
                 });
             });
         });
@@ -103,10 +109,16 @@ $(() => {
       createUser(data)
         .then(res => {
           header.update(res.user);
-          getPasswords()
-            .then((response) => {
-              passwords.renderPasswords(response);
-              viewsManager.show('passwords');
+          getCurrentUser()
+            .then((json) => {
+              const data = {
+                organizationID: json.user.organizationID,
+              };
+              getPasswords(data)
+                .then((response) => {
+                  passwords.renderPasswords(response);
+                  viewsManager.show('passwords');
+                });
             });
         });
     }

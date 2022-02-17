@@ -51,11 +51,16 @@ $(document).ready(function() {
 
   $navBar.on('click', '#homepage', (event) => {
     event.preventDefault();
-
-    getPasswords()
-      .then((response) => {
-        passwords.renderPasswords(response);
-        viewsManager.show('passwords');
+    getCurrentUser()
+      .then((json) => {
+        const data = {
+          organizationID: json.user.organizationID,
+        };
+        getPasswords(data)
+          .then((response) => {
+            passwords.renderPasswords(response);
+            viewsManager.show('passwords');
+          });
       });
   });
 
@@ -109,10 +114,16 @@ $(document).ready(function() {
     if (header.includes('OFF')) $('#secureMode').html(`Secure Mode ON`);
     else $('#secureMode').html(`Secure Mode OFF`);
     // render passwords table page
-    getPasswords()
-      .then((response) => {
-        passwords.renderPasswords(response);
-        viewsManager.show('passwords');
+    getCurrentUser()
+      .then((json) => {
+        const data = {
+          organizationID: json.user.organizationID,
+        };
+        getPasswords(data)
+          .then((response) => {
+            passwords.renderPasswords(response);
+            viewsManager.show('passwords');
+          });
       });
 
 
