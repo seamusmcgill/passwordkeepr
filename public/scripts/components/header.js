@@ -5,7 +5,7 @@ $(document).ready(function() {
     event.preventDefault();
     // toggle isSecureMode on window object
     window.isSecureMode ? window.isSecureMode = false : window.isSecureMode = true;
-
+    console.log(window.isSecureMode);
     const header = $('#secureMode').html();
     if (header.includes('OFF')) $('#secureMode').html(`Secure Mode ON`);
     else $('#secureMode').html(`Secure Mode OFF`);
