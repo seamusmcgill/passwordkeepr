@@ -26,7 +26,7 @@ module.exports = (db) => {
   const getUserWithEmail = function(email) {
     // Query database with user-inputted email
     return db.query(`
-    SELECT users.full_name, users.email, users.id, users.password, organizations.name AS organization_name
+    SELECT users.full_name, users.email, users.id, users.password, users.organization_id, organizations.name AS organization_name
     FROM users JOIN organizations ON users.organization_id = organizations.id
     WHERE email = $1`, [email])
       .then(result => {
@@ -82,6 +82,7 @@ module.exports = (db) => {
           return;
         }
         req.session.userId = user.id;
+        req.session.organizationId = user.organization_id;
         console.log("Logged in user is: ", req.session.userId);
         res.send({user: {name: user.full_name, email: user.email, organization: user.organization_name, id: user.id}});
       })
@@ -105,6 +106,7 @@ module.exports = (db) => {
       .then(data => {
         const user = data.rows[0];
         req.session.userId = user.id;
+        req.session.organizationId = user.organization_id;
         getUserWithId(user.id)
           .then(user => {
             res.json({user: {name: user.full_name, email: user.email, organization: user.organization_name, id: user.id}});
@@ -154,6 +156,7 @@ module.exports = (db) => {
 
   router.post('/logout', (req, res) => {
     req.session.userId = null;
+    req.session.organizationId = null;
     res.send({});
   });
 
