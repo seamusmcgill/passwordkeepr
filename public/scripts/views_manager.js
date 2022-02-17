@@ -1,34 +1,32 @@
 /* eslint-disable no-undef */
 $(() => {
 
-  const $body = $('body');
-
   window.viewsManager = {};
 
   window.viewsManager.show = function(item) {
-    $('section').empty();
+    $('main').empty();
 
     switch (item) {
     case 'passwords':
-      $passwordsTable.appendTo('section');
+      $passwordsTable.appendTo('main');
       break;
     case 'newPassword':
-      $newPasswordHTML.appendTo('section');
+      $newPasswordHTML.appendTo('main');
       break;
     case 'editPassword':
-      $editPasswordForm.appendTo('section');
+      $editPasswordForm.appendTo('main');
       break;
     case 'newCategory':
-      $newCategoryHTML.appendTo('section');
+      $newCategoryHTML.appendTo('main');
       break;
     case 'editCategory':
-      $editCategoryForm.appendTo('section');
+      $editCategoryForm.appendTo('main');
       break;
     case 'registration':
-      $registrationForm.appendTo('section');
+      $registrationForm.appendTo('main');
       break;
     case 'login':
-      $logInForm.appendTo('section');
+      $logInForm.appendTo('main');
       break;
     case 'error': {
       const $error = $(`<p>${arguments[1]}</p>`);
