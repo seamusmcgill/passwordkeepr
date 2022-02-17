@@ -12,24 +12,32 @@ $(document).ready(function() {
   window.$passwordsTable = $passwordsTable;
 
   const $tableHeader = $(`
+  <thead>
     <tr id="table-header">
-      <th>Name</th>
-      <th>Category</th>
-      <th>Username</th>
-      <th>Password</th>
-      <th>Edit</th>
-      <th>Copy</th>
+      <th scope="col">Name</th>
+      <th scope="col">Category</th>
+      <th scope="col">Username</th>
+      <th scope="col">Password</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Copy</th>
     </tr>
+  </thead>
   `);
+
+  const $tableBody = $(`
+      <tbody>
+      </tbody>`);
 
   // Clear what was in passwords table before rendering
   const renderPasswords = passwords => {
     $passwordsTable.empty();
+    $tableBody.empty();
     $tableHeader.appendTo($passwordsTable);
     const passwordsArray = passwords.passwords;
     for (let password of passwordsArray) {
-      $passwordsTable.append(createPasswordElement(password));
+      $tableBody.append(createPasswordElement(password));
     }
+    $tableBody.appendTo($passwordsTable);
   };
 
   // Make function accessible by other files through window object
@@ -38,7 +46,7 @@ $(document).ready(function() {
   const createPasswordElement = password => {
     const passwordHTML = `
     <tr>
-      <td>
+      <td scope="row">
         <a href="${password.service_url}">${password.service_name}</a>
       </td>
       <td><a class="category-${password.category_id}" href="#">${password.category_name || ""}</a></td>
