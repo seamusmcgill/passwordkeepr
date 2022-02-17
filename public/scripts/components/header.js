@@ -15,6 +15,7 @@ $(document).ready(function() {
       userLinks = `
       <ul>
         <li><a id="homepage" href="#">PasswordKeepR</a></li>
+        <li><i class="fa-solid fa-lock"></i></li>
       </ul>
       <ul>
         <li><a id="registerLink" href="#">Register</a></li>
@@ -24,6 +25,7 @@ $(document).ready(function() {
       userLinks = `
       <ul>
         <li><a id="homepage" href="#">PasswordKeepR</a></li>
+        <li><i class="fa-solid fa-lock"></i></li>
       </ul>
       <ul>
           <li><a id="secureMode" href="#">Secure Mode OFF</a></li>
@@ -32,7 +34,7 @@ $(document).ready(function() {
           <li><a id="logOutButton" href="#">Logout</a></li>
       </ul>
       <ul>
-          <li>Logged in as ${user.name}</li>
+          <li>${user.name}</li>
           <li><img src="${user.logo_url}"></li>
       </ul>
       `;
