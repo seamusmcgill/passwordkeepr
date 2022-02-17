@@ -1,21 +1,7 @@
 /* eslint-disable no-undef */
 $(document).ready(function() {
 
-  $('body').on('click', '#secureMode', (event => {
-    event.preventDefault();
-    // toggle isSecureMode on window object
-    window.isSecureMode ? window.isSecureMode = false : window.isSecureMode = true;
 
-    const header = $('#secureMode').html();
-    if (header.includes('OFF')) $('#secureMode').html(`Secure Mode ON`);
-    else $('#secureMode').html(`Secure Mode OFF`);
-    // render passwords table page
-    getPasswords()
-      .then((response) => {
-        passwords.renderPasswords(response);
-        viewsManager.show('passwords');
-      });
-  }));
 
   window.header = {};
 
@@ -98,5 +84,39 @@ $(document).ready(function() {
         viewsManager.show('registration');
       });
   });
+
+  $('body').on('click', '#secureMode', (event => {
+    event.preventDefault();
+    // If secure mode is on
+    if (window.isSecureMode) {
+      $('.container').remove();
+      const authentication = `
+      <div class="container">
+      <h4>TURN SECURE MODE OFF<h4>
+      <p class="close-window">x</p>
+      <input id="secure-mode-auth-input" name="secure-mode-auth-input" type="password" placeholder="Enter your password">
+      <button id="secure-mode-off-auth-button" type=button>Verify</button>
+      </div>
+      `;
+      $('body').append(authentication);
+      return;
+    }
+
+    // toggle isSecureMode on window object
+    window.isSecureMode ? window.isSecureMode = false : window.isSecureMode = true;
+
+    const header = $('#secureMode').html();
+    if (header.includes('OFF')) $('#secureMode').html(`Secure Mode ON`);
+    else $('#secureMode').html(`Secure Mode OFF`);
+    // render passwords table page
+    getPasswords()
+      .then((response) => {
+        passwords.renderPasswords(response);
+        viewsManager.show('passwords');
+      });
+
+
+
+  }));
 
 });

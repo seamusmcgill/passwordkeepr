@@ -83,7 +83,9 @@ $(document).ready(function() {
     copyToClipboard(`#password-entry-${passwordID}`);
   }));
 
-  // SECURE MODE
+  // SECURE MODE BELOW
+
+  // On click of secure individual password
   $('body').on('click', "[id^='strong-password-']", (event => {
     $('.container').remove();
     const elementID = $(event.target).attr("id");
@@ -91,6 +93,7 @@ $(document).ready(function() {
 
     const authentication = `
     <div class="container">
+    <h4>REVEAL PASSWORD</h4>
     <p class="close-window">x</p>
     <input id="secure-mode-auth-input" name="secure-mode-auth-input" type="password" placeholder="Enter your password">
     <button id="secure-mode-auth-button-${passwordID}" type=button>Verify</button>
@@ -99,6 +102,7 @@ $(document).ready(function() {
     $('body').append(authentication);
   }));
 
+  // On submitting user password when prompted to reveal a single password
   $('body').on('click', "[id^='secure-mode-auth-button']", (event => {
     // retrieve the user-entered password
     const password = $('#secure-mode-auth-input').val();
@@ -131,6 +135,37 @@ $(document).ready(function() {
       });
   }));
 
+  // On submitting user password when prompted to turn secure mode off
+  $('body').on('click', '#secure-mode-off-auth-button', (event => {
+    // retrieve the user-entered password
+    const password = $('#secure-mode-auth-input').val();
+    // retrieve the logged in user's email
+    getCurrentUser()
+      .then((json) => {
+        const data = {
+          email: json.user.email,
+          password: password
+        };
+        // verify the user (via users.js and network.js), including the email and password to be tested as a param object
+        verifyUser(data)
+          .then(res => {
+            // if it's not a match according to the DB, hide the window and do not show the password
+            if (!res) {
+              $('.container').remove();
+              return;
+            }
+            $('.container').remove();
+            window.isSecureMode = false;
+            $('#secureMode').html(`Secure Mode OFF`);
+            getPasswords()
+              .then((response) => {
+                renderPasswords(response);
+                viewsManager.show('passwords');
+              });
+          });
+      });
+  }));
+  // On closing the verify window with 'x'
   $('body').on('click', '.close-window', (event => {
     $('.container').remove();
   }));
