@@ -6,9 +6,7 @@ $(document).ready(function() {
 
   const $newPasswordHTML = $(`
   <div>
-    <h1>Create password</h1>
-  </div>
-  <div>
+    <span class="passwordNameHeader"><h1>Create password</h1></span>
     <form id="newPasswordForm">
       <label for="service_name">Name:</label>
       <input id="service_name" name="service_name" placeholder="Enter name of service">

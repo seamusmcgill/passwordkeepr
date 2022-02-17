@@ -16,8 +16,10 @@ module.exports = (db) => {
     db.query(`SELECT passwords.id, service_name, service_url, login_username, login_password, passwords.description,
     categories.id AS category_id, categories.name AS category_name, categories.description AS category_description
     FROM passwords LEFT OUTER JOIN categories ON categories.id = category_id
-    JOIN users ON passwords.creator_id = users.id
+    JOIN organizations ON passwords.organization_id = organizations.id
+    JOIN users ON users.organization_id = organizations.id
     WHERE users.organization_id = $1
+    GROUP BY users.organization_id
     ORDER BY passwords.id;`, parameters)
       .then(data => {
         const passwords = data.rows;

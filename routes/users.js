@@ -45,7 +45,7 @@ module.exports = (db) => {
   const getUserWithId = function(id) {
     // Query database for a user with a specific ID
     return db.query(`
-    SELECT users.full_name, users.email, users.id, users.organization_id, organizations.name AS organization_name
+    SELECT users.full_name, users.email, users.id, users.organization_id, organizations.name AS organization_name, organizations.logo_url AS logo_url
     FROM users JOIN organizations ON users.organization_id = organizations.id
     WHERE users.id = $1`, [id])
       .then(result => {
@@ -132,7 +132,7 @@ module.exports = (db) => {
           return;
         }
 
-        res.send({user: {name: user.full_name, email: user.email, organization: user.organization_name, organizationID: user.organization_id, id: userId}});
+        res.send({user: {name: user.full_name, email: user.email, organization: user.organization_name, organizationID: user.organization_id, logo_url: user.logo_url, id: userId}});
       })
       .catch(e => res.send(e));
   });

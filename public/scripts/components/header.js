@@ -1,11 +1,9 @@
 /* eslint-disable no-undef */
 $(document).ready(function() {
 
-
-
   window.header = {};
 
-  const $navBar = $('#navbar');
+  const $navBar = $('nav');
   let currentUser = null;
   const updateHeader = (user) => {
     currentUser = user;
@@ -15,26 +13,28 @@ $(document).ready(function() {
 
     if (!user) {
       userLinks = `
-      <a id="homepage" href="#">PasswordKeepR</a>
-      <div>
-        <a id="registerLink" href="#">Register</a>
+      <ul>
+        <li><a id="homepage" href="#">PasswordKeepR</a></li>
+      </ul>
+      <ul>
+        <li><a id="registerLink" href="#">Register</a></li>
       </div>
       `;
     } else {
       userLinks = `
-      <a id="homepage" href="#">PasswordKeepR</a>
-      <div id="nav-right">
-        <div>
-          <a id="secureMode" href="#">Secure Mode OFF</a>
-          <a id="newCategoryLink" href="#">+Category</a>
-          <a id="newPasswordLink" href="#">+Password</a>
-          <a id="logOutButton" href="#">Logout</a>
-        </div>
-        <div>
-          <p>Logged in as ${user.name}</p>
-          <p>${user.organization}</p>
-        </div>
-      </div>
+      <ul>
+        <li><a id="homepage" href="#">PasswordKeepR</a></li>
+      </ul>
+      <ul>
+          <li><a id="secureMode" href="#">Secure Mode OFF</a></li>
+          <li><a id="newCategoryLink" href="#">+Category</a></li>
+          <li><a id="newPasswordLink" href="#">+Password</a></li>
+          <li><a id="logOutButton" href="#">Logout</a></li>
+      </ul>
+      <ul>
+          <li>Logged in as ${user.name}</li>
+          <li><img src="${user.logo_url}"></li>
+      </ul>
       `;
     }
 

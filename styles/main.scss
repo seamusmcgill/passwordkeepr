@@ -1,38 +1,16 @@
 /* Color Palette: https://coolors.co/2a2b2e-5a5a66-a4c2a8-aceb98-87ff65 */
 
-section {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  min-height: 100vh;
-  padding-top: 120px;
-  background: #2A2B2E;
-  color: #87FF65;
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 600;
-}
-
-table, th, td {
-  border: 1px solid #A4C2A8;
-  border-collapse: collapse;
-  padding: 0.75em;
-}
-
-th {
-  font-weight: 600;
-  color: #ACEB98;
-}
-
-td {
-  color: #A4C2A8;
-  font-weight: 300;
-}
-
-a {
-  color: #87FF65;
+/* Red Dark scheme (Forced) */
+/* Enabled if forced with data-theme="dark" */
+[data-theme="dark"] {
+  --primary: #e53935;
+  --primary-hover: #f44336;
+  --primary-focus: rgba(229, 57, 53, 0.25);
+  --primary-inverse: #FFF;
 }
 
 nav {
+<<<<<<< HEAD
   display: flex;
   position: fixed;
   align-items: center;
@@ -160,6 +138,182 @@ nav {
 .close-window:hover {
   cursor: pointer;
 }
+=======
+  padding: 0 1em 0 1em;
+  --primary: #FFF;
+  --primary-hover: #C8C8C8;
+  --primary-focus: rgba(229, 57, 53, 0.25);
+  background-color: #e53935;
+}
+
+tbody > tr:hover {
+  background-color: #1C2329;
+}
+
+
+nav  img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: white;
+}
+// main {
+//   // display: flex;
+//   // justify-content: center;
+//   // align-items: flex-start;
+//   // min-height: 100vh;
+//   // width: 80%;
+//   // background: #2A2B2E;
+//   // color: #87FF65;
+//   // font-family: 'JetBrains Mono', monospace;
+//   // font-weight: 600;
+// }
+
+// // table, th, td {
+// //   border: 1px solid #A4C2A8;
+// //   border-collapse: collapse;
+// //   padding: 0.75em;
+// // }
+
+// // th {
+// //   font-weight: 600;
+// //   color: #ACEB98;
+// // }
+
+// // td {
+// //   color: #A4C2A8;
+// //   font-weight: 300;
+// // }
+
+// a {
+//   color: #87FF65;
+// }
+
+// nav {
+//   // display: flex;
+//   // position: fixed;
+//   // align-items: center;
+//   // z-index: 2;
+//   // display: flex;
+//   // flex-direction: row;
+//   // justify-content: space-between;
+//   // padding: 0 1.5em;
+//   // // height: 80px;
+//   // width: 100%;
+//   // background-color: #5A5A66;
+//   // color: #ACEB98;
+//   // font-family: 'JetBrains Mono', monospace;
+//   // font-weight: 600;
+//   height: 240px;
+//   background-color: lightgray;
+// }
+
+// // .container {
+// //   position: absolute;
+// //   top:25%;
+// //   left:50%;
+// //   transform:translate(-50%,-50%);
+// //   font-family: 'JetBrains Mono', monospace;
+// //   font-weight: 600;
+// //   background-color: #000000;
+// //   padding: 1.5em 1.5em;
+// // }
+
+// .label{
+//   padding:10px;
+//   font-size:18px;
+//   color:#ACEB98;
+// }
+
+// .copy-text {
+//   position: relative;
+//   padding:10px;
+//   background:#fff;
+//   border:1px solid #ddd;
+//   border-radius:10px;
+//   display:flex;
+// }
+
+// .copy-text input.text {
+//   padding:10px;
+//   font-size:18px;
+//   color: #555;
+//   border:none;
+//   outline:none;
+// }
+
+
+// .copy-text button{
+//   padding:10px;
+//   background: #ACEB98;
+//   color: #fff;
+//   font-size:18px;
+//   border:none;
+//   outline:none;
+//   border-radius:10px;
+//   cursor: pointer;
+// }
+
+// .copy-text button:active {
+//   background:#4a803a;
+// }
+
+// .copy-text button:before{
+//   content: "copied";
+//   position: absolute;
+//   top:-45px;
+//   right:0px;
+//   background:#ACEB98;
+//   padding:8px, 10px;
+//   border-radius:20px;
+//   font-size:15px;
+//   display:none;
+// }
+
+// .copy-text button:after{
+//   content:"";
+//   position:absolute;
+//   top: -20px;
+//   right: 25px;
+//   width: 10px;
+//   height: 10px;
+//   background: #aceb98;
+//   transform: rotate(45deg);
+//   display: none;
+// }
+
+// .copy-text.active button:before,
+// .copy-text.active button:after {
+//   display:block;
+// }
+
+// #nav-right {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+//   align-items: center;
+// }
+
+// #secure-mode-auth-button {
+//   background-color: #313131;
+//   color: #ACEB98;
+// }
+
+// #secure-mode-auth-input {
+//   background-color: #313131;
+//   color: #ACEB98;
+// }
+
+// .close-window {
+//   color: #ACEB98;
+//   display: inline;
+//   border: 1px solid;
+// }
+
+// .close-window:hover {
+//   cursor: pointer;
+// }
+>>>>>>> 28-incorporate-css-framework
 
 
 
