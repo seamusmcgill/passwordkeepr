@@ -13,9 +13,11 @@ $(() => {
       break;
     case 'newPassword':
       $newPasswordHTML.appendTo('main');
+      generateCategoryOptions();
       break;
     case 'editPassword':
       $editPasswordForm.appendTo('main');
+      generateCategoryOptions();
       break;
     case 'newCategory':
       $newCategoryHTML.appendTo('main');
