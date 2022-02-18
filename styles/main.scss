@@ -9,6 +9,29 @@
   --primary-inverse: #FFF;
 }
 
+.createPasswordNew{
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.createCategoryNew{
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#newCategoryForm{
+  width: 40%;
+}
+
+.secure-mode-popup{
+  position: absolute;
+    top: 317px;
+}
+
 nav {
   padding: 0 1em 0 1em;
   --primary: #FFF;
@@ -21,6 +44,16 @@ tbody > tr:hover {
   background-color: #1C2329;
 }
 
+#newPasswordForm {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width:40%
+}
+
+.container{
+  padding: 15px;
+}
 
 nav  img {
   height: 50px;

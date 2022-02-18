@@ -91,8 +91,8 @@ $(document).ready(function() {
 
     const authentication = `
     <div class="secure-mode-popup">
-    <h4>REVEAL PASSWORD</h4>
     <p class="close-window">x</p>
+    <h4>REVEAL PASSWORD</h4>
     <input id="secure-mode-auth-input" name="secure-mode-auth-input" type="password" placeholder="Enter your password">
     <button id="secure-mode-auth-button-${passwordID}" type=button>Verify</button>
     </div>
@@ -154,7 +154,7 @@ $(document).ready(function() {
             }
             $('.secure-mode-popup').remove();
             window.isSecureMode = false;
-            $('#secureMode').html(`Secure Mode OFF`);
+            $('#secureMode').html(`<i class="fa-solid fa-lock-open"></i>`);
             getCurrentUser()
               .then((json) => {
                 const data = {
