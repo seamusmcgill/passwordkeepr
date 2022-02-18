@@ -8,6 +8,7 @@ $(() => {
 
     switch (item) {
     case 'passwords':
+      $addPasswordButton.appendTo('main');
       $passwordsTable.appendTo('main');
       break;
     case 'newPassword':
