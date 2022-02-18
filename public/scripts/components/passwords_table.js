@@ -164,6 +164,7 @@ $(document).ready(function() {
                   .then((response) => {
                     renderPasswords(response);
                     viewsManager.show('passwords');
+                    displayCategories();
                   });
               });
           });

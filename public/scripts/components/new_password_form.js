@@ -95,6 +95,7 @@ $(document).ready(function() {
               .then((response) => {
                 passwords.renderPasswords(response);
                 viewsManager.show('passwords');
+                displayCategories();
               });
           });
       });

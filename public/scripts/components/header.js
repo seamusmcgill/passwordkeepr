@@ -62,11 +62,12 @@ $(document).ready(function() {
           .then((response) => {
             passwords.renderPasswords(response);
             viewsManager.show('passwords');
+            displayCategories();
           });
       });
   });
 
-  $navBar.on('click', '#newCategoryLink', (event) => {
+  $(document).on('click', '#newCategoryLink', (event) => {
     event.preventDefault();
     viewsManager.show('newCategory');
   });
@@ -125,6 +126,7 @@ $(document).ready(function() {
           .then((response) => {
             passwords.renderPasswords(response);
             viewsManager.show('passwords');
+            displayCategories();
           });
       });
 

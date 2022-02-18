@@ -28,66 +28,61 @@ nav  img {
   border-radius: 50%;
   background-color: white;
 }
-// main {
-//   // display: flex;
-//   // justify-content: center;
-//   // align-items: flex-start;
-//   // min-height: 100vh;
-//   // width: 80%;
-//   // background: #2A2B2E;
-//   // color: #87FF65;
-//   // font-family: 'JetBrains Mono', monospace;
-//   // font-weight: 600;
-// }
 
-// // table, th, td {
-// //   border: 1px solid #A4C2A8;
-// //   border-collapse: collapse;
-// //   padding: 0.75em;
-// // }
-
-// // th {
-// //   font-weight: 600;
-// //   color: #ACEB98;
-// // }
-
-// // td {
-// //   color: #A4C2A8;
-// //   font-weight: 300;
-// // }
-
-// a {
-//   color: #87FF65;
-// }
-
-// nav {
-//   // display: flex;
-//   // position: fixed;
-//   // align-items: center;
-//   // z-index: 2;
-//   // display: flex;
-//   // flex-direction: row;
-//   // justify-content: space-between;
-//   // padding: 0 1.5em;
-//   // // height: 80px;
-//   // width: 100%;
-//   // background-color: #5A5A66;
-//   // color: #ACEB98;
-//   // font-family: 'JetBrains Mono', monospace;
-//   // font-weight: 600;
-//   height: 240px;
-//   background-color: lightgray;
-// }
-
-#search-container {
-  margin-top: 2em;
+figure {
   display: flex;
-  flex-direction: row;
   justify-content: center;
 }
 
+#table-header > th {
+  font-size: 12px;
+}
+
+#categories-display > div {
+  background-color: rgba(229, 57, 53, 0.25);
+  border-radius: 10px;
+  height: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+#categories-display > div:hover {
+  background-color: #e53935;
+}
+
+#categories-display > #newCategoryLink {
+  background-color: rgba(67, 160, 71, 0.25);
+}
+
+#categories-display > #newCategoryLink:hover {
+  background-color: #43a047;
+}
+
+
+#categories-display div {
+  margin-bottom: 2em;
+}
+
+.fa-solid {
+  cursor: pointer;
+}
+
+#search-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-bottom: 1em;
+}
+
 #passwords-table-search {
-  width: 50%;
+  width: 100%;
+  height: 2em;
 }
 
 #homepage {
