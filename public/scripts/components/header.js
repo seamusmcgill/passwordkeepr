@@ -28,7 +28,7 @@ $(document).ready(function() {
         <li><i class="fa-solid fa-lock"></i></li>
       </ul>
       <ul>
-          <li><a id="secureMode" href="#">Secure Mode OFF</a></li>
+          <li><a id="secureMode" href="#"><i class="fa-solid fa-lock-open"></i></a></li>
           <li><a id="newCategoryLink" href="#">+Category</a></li>
           <li><a id="newPasswordLink" href="#">+Password</a></li>
           <li><a id="logOutButton" href="#">Logout</a></li>
@@ -113,8 +113,8 @@ $(document).ready(function() {
     window.isSecureMode ? window.isSecureMode = false : window.isSecureMode = true;
 
     const header = $('#secureMode').html();
-    if (header.includes('OFF')) $('#secureMode').html(`Secure Mode ON`);
-    else $('#secureMode').html(`Secure Mode OFF`);
+    if ($('#secureMode').html() === '<i class="fa-solid fa-lock-open"></i>' ) $('#secureMode').html(`<i class="fa-solid fa-lock"></i>`);
+    else $('#secureMode').html(`<i class="fa-solid fa-lock-open"></i>`);
     // render passwords table page
     getCurrentUser()
       .then((json) => {
