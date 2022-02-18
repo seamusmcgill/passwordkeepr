@@ -44,6 +44,33 @@ tbody > tr:hover {
   background-color: #1C2329;
 }
 
+#newPasswordLink {
+  position: fixed;
+  z-index: 100;
+  right: 25px;
+  bottom: 25px;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  background-color: #e53935;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+#newPasswordLink > i {
+  color: #ffffff;
+  text-align: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  font-size: 48px;
+}
+
+#newPasswordLink:hover {
+  background-color: #db2f2b;
+}
+
 #newPasswordForm {
   display: flex;
   flex-direction: column;
@@ -160,101 +187,5 @@ figure {
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
-
-// .label{
-//   padding:10px;
-//   font-size:18px;
-//   color:#ACEB98;
-// }
-
-// .copy-text {
-//   position: relative;
-//   padding:10px;
-//   background:#fff;
-//   border:1px solid #ddd;
-//   border-radius:10px;
-//   display:flex;
-// }
-
-// .copy-text input.text {
-//   padding:10px;
-//   font-size:18px;
-//   color: #555;
-//   border:none;
-//   outline:none;
-// }
-
-
-// .copy-text button{
-//   padding:10px;
-//   background: #ACEB98;
-//   color: #fff;
-//   font-size:18px;
-//   border:none;
-//   outline:none;
-//   border-radius:10px;
-//   cursor: pointer;
-// }
-
-// .copy-text button:active {
-//   background:#4a803a;
-// }
-
-// .copy-text button:before{
-//   content: "copied";
-//   position: absolute;
-//   top:-45px;
-//   right:0px;
-//   background:#ACEB98;
-//   padding:8px, 10px;
-//   border-radius:20px;
-//   font-size:15px;
-//   display:none;
-// }
-
-// .copy-text button:after{
-//   content:"";
-//   position:absolute;
-//   top: -20px;
-//   right: 25px;
-//   width: 10px;
-//   height: 10px;
-//   background: #aceb98;
-//   transform: rotate(45deg);
-//   display: none;
-// }
-
-// .copy-text.active button:before,
-// .copy-text.active button:after {
-//   display:block;
-// }
-
-// #nav-right {
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: space-between;
-//   align-items: center;
-// }
-
-// #secure-mode-auth-button {
-//   background-color: #313131;
-//   color: #ACEB98;
-// }
-
-// #secure-mode-auth-input {
-//   background-color: #313131;
-//   color: #ACEB98;
-// }
-
-// .close-window {
-//   color: #ACEB98;
-//   display: inline;
-//   border: 1px solid;
-// }
-
-// .close-window:hover {
-//   cursor: pointer;
-// }
-
 
 
