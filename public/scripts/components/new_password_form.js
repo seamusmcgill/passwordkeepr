@@ -6,7 +6,7 @@ $(document).ready(function() {
 
   const $newPasswordHTML = $(`
   <div class="createPasswordNew">
-    <h1>Create password</h1>
+    <h3>Create password</h3>
     <form id="newPasswordForm">
       <label for="service_name">Name:</label>
       <input id="service_name" name="service_name" placeholder="Enter name of service">
@@ -19,6 +19,8 @@ $(document).ready(function() {
       <button id="toggleGenerate" type="button">Generate</button>
       <label for="description">Description:</label>
       <input id="description" name="description" placeholder="What does the service do?">
+      <label for="category">Category:</label>
+      <select id="category_id"></select>
       <button type="submit">Create</button>
     </form>
   </div>
@@ -38,7 +40,17 @@ $(document).ready(function() {
         </form>
       `);
 
+  const generateCategoryOptions = () => {
+    getCategories()
+      .then(res => {
+        const categoriesArray = res.categories;
+        for (const category of categoriesArray) {
+          $("#category_id").append(`<option value='${category.id}'>${category.name}</option>`)
+        }
+      });
+  };
 
+  window.generateCategoryOptions = generateCategoryOptions;
 
   $(document).on('click', '#toggleGenerate', (event => {
 
@@ -79,7 +91,8 @@ $(document).ready(function() {
       service_url: $('#service_url').val(),
       login_username: $('#login_username').val(),
       login_password: $('#login_password').val(),
-      description: $('#description').val()
+      description: $('#description').val(),
+      category_id: $('#category_id').val(),
     };
 
     // eslint-disable-next-line no-undef

@@ -11,6 +11,8 @@ $(document).ready(function() {
           <input id="password-${password.id}-login_password" type="password" name="login_password" value="${password.login_password}">
           <label for="password-${password.id}-description">Description:</label>
           <input id="password-${password.id}-description" name="description" value="${password.description}">
+          <label for="category">Category:</label>
+          <select id="category_id"></select>
           <button type="submit">Edit</button>
       </form>
     `);
@@ -52,6 +54,7 @@ $(document).ready(function() {
       login_username: $(`#password-${passwordID}-login_username`).val(),
       login_password: $(`#password-${passwordID}-login_password`).val(),
       description: $(`#password-${passwordID}-description`).val(),
+      category_id: $(`#category_id`).val(),
     };
 
     editPassword(password)
