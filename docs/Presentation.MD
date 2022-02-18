@@ -42,6 +42,8 @@ To turn it off it requires password
 
 ## DEMO - EDIT + CREATE PASSWORDS - BARENTO
 
+Passwords are unique to organizations - we'll log out and show you a different password table displaying for a member of a different organization
+
 A logged in user can edit details about a password
   - username, password, description, and can reassign categories
 
