@@ -95,6 +95,19 @@ $(document).ready(function() {
       category_id: $('#category_id').val(),
     };
 
+    // Check if valid form entry
+    let invalidForm = false;
+
+    for (const key in data) {
+      if (key !== 'description' && $(`#${key}`).val() === "") {
+        $(`#${key}`).attr("aria-invalid", "true");
+        invalidForm = true;
+      }
+    }
+    if (invalidForm) {
+      return;
+    }
+
     // eslint-disable-next-line no-undef
     postPassword(data)
       .then((res) => {
