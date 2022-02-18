@@ -15,19 +15,19 @@ $(document).ready(function() {
   };
 
   // Generate edit category form when edit button in categories table is clicked
-  // $(document).on("click",  "[class^='category-']", (event) => {
-  //   event.preventDefault();
-  //   let elementClass = ($(event.target).attr("class"));
-  //   let categoryID = elementClass.slice('category-'.length);
+  $(document).on("click",  "[class^='category-']", (event) => {
+    event.preventDefault();
+    let elementClass = ($(event.target).attr("class"));
+    let categoryID = elementClass.slice('category-'.length);
 
-  //   // Make a get request to retrieve category information then render category form with views manager
-  //   getCategory(categoryID)
-  //     .then((response) => {
-  //       let category = response.category[0];
-  //       window.$editCategoryForm = generateEditCategoryForm(category);
-  //       viewsManager.show('editCategory');
-  //     });
-  // });
+    // Make a get request to retrieve category information then render category form with views manager
+    getCategory(categoryID)
+      .then((response) => {
+        let category = response.category[0];
+        window.$editCategoryForm = generateEditCategoryForm(category);
+        viewsManager.show('editCategory');
+      });
+  });
 
   // On form submit send form data in an AJAX post request then render updated categorys table
   $(document).on('submit', "[id^='edit-form-category-']", (event) => {
