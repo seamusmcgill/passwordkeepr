@@ -26,7 +26,7 @@ module.exports = (db) => {
   const getUserWithEmail = function(email) {
     // Query database with user-inputted email
     return db.query(`
-    SELECT users.full_name, users.email, users.id, users.password, users.organization_id, organizations.name AS organization_name
+    SELECT users.full_name, users.email, users.id, users.password, users.organization_id, organizations.name AS organization_name, organizations.logo_url AS logo_url
     FROM users JOIN organizations ON users.organization_id = organizations.id
     WHERE email = $1`, [email])
       .then(result => {
@@ -84,7 +84,7 @@ module.exports = (db) => {
         req.session.userId = user.id;
         req.session.organizationId = user.organization_id;
         console.log("Logged in user is: ", req.session.userId);
-        res.send({user: {name: user.full_name, email: user.email, organization: user.organization_name, id: user.id}});
+        res.send({user: {name: user.full_name, email: user.email, organization: user.organization_name, logo_url: user.logo_url, id: user.id}});
       })
       .catch(e => res.send(e));
   });
