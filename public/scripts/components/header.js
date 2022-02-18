@@ -28,7 +28,6 @@ $(document).ready(function() {
       <ul>
           <li><a id="secureMode" href="#"><i class="fa-solid fa-lock-open"></i></a></li>
           <li><a id="newCategoryLink" href="#">+Category</a></li>
-          <li><a id="newPasswordLink" href="#">+Password</a></li>
           <li><a id="logOutButton" href="#">Logout</a></li>
       </ul>
       <ul>
@@ -70,7 +69,7 @@ $(document).ready(function() {
     viewsManager.show('newCategory');
   });
 
-  $navBar.on('click', '#newPasswordLink', (event) => {
+  $(document).on('click', '#newPasswordLink', (event) => {
     event.preventDefault();
     viewsManager.show('newPassword');
   });
