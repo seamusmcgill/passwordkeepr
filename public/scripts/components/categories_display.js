@@ -35,6 +35,16 @@ $(() => {
   window.displayCategories = displayCategories;
 
   $(document).on('click', "[id^='filter-category-']", (event) => {
+    const target = $(event.target);
+    const id = target.attr('id');
+    if (window.id) {
+      window.id = false;
+      target.css('background-color', '');
+      $('.table-row').show();
+      return;
+    }
+    window.id = true;
+    target.css('background-color', '#e53935');
     const value = $(event.target).html();
     $('.table-row').hide();
     $('.table-row').has("td:contains(" + value + ")").show();
