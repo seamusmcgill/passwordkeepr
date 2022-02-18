@@ -14,7 +14,7 @@ $(document).ready(function() {
     `);
   };
 
-  // Generate edit category form when edit button in categories table is clicked
+  // // Generate edit category form when edit button in categories table is clicked
   // $(document).on("click",  "[class^='category-']", (event) => {
   //   event.preventDefault();
   //   let elementClass = ($(event.target).attr("class"));

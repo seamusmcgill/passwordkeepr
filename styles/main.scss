@@ -13,6 +13,10 @@ main {
   margin-top: 2em;
 }
 
+label {
+  display:none;
+}
+
 .createPasswordNew{
   display: flex;
     flex-direction: column;
