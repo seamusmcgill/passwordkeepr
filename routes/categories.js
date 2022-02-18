@@ -25,18 +25,18 @@ module.exports = (db) => {
 
   router.post("/", (req, res) => {
     const newCategoryObject = req.body;
-    const parameters = [`${newCategoryObject.category_name}`, `${newCategoryObject.category_description}`];
+    const parameters = [`${req.session.userId}`, `${newCategoryObject.category_name}`, `${newCategoryObject.category_description}`];
     db.query(`
     INSERT INTO categories
       (creator_id, name, description)
     VALUES
-      (1, $1, $2)
+      ($1, $2, $3)
     RETURNING
       *;
     `, parameters)
       .then(data => {
         const response = data.rows;
-        console.log(response);
+        res.json({ response });
       })
       .catch(err => {
         res

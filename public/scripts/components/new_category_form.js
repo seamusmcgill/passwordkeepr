@@ -18,7 +18,7 @@ $(document).ready(function() {
 
   window.$newCategoryHTML = $newCategoryHTML;
 
-  $('#newCategoryForm').on('submit', (event => {
+  $(document).on('submit', '#newCategoryForm', (event => {
     event.preventDefault();
 
     const data = {
@@ -26,8 +26,9 @@ $(document).ready(function() {
       category_description: $('#category_description').val(),
     };
     console.log(data);
+
     const postCategory = (data) => {
-      $.ajax({
+      return $.ajax({
         method: 'POST',
         url: '/api/categories',
         data
@@ -35,8 +36,19 @@ $(document).ready(function() {
     };
 
     postCategory(data)
-      .then((response) => {
-        console.log(response);
+      .then((res) => {
+        getCurrentUser()
+          .then((json) => {
+            const data = {
+              organizationID: json.user.organizationID,
+            };
+            getPasswords(data)
+              .then((response) => {
+                passwords.renderPasswords(response);
+                viewsManager.show('passwords');
+                displayCategories();
+              });
+          });
       });
 
 
