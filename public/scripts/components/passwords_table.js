@@ -3,6 +3,11 @@ $(document).ready(function() {
   // Create window.passwords object
   window.passwords = {};
 
+  const $addPasswordButton = $(`
+      <div id="newPasswordLink"><i class="fa-solid fa-plus"></i></div>`);
+
+  window.$addPasswordButton = $addPasswordButton;
+
   const $passwordsTable = $(`
   <table>
   </table>
@@ -69,11 +74,13 @@ $(document).ready(function() {
     $('.tooltiptext').html('Copy Password');
     let elementID;
     if (!($(event.target).attr("id"))) {
-      $(event.target).parent().html('<i class="fa-solid fa-clone"></i><span class="tooltiptext">Copied!</span>');
       elementID = ($(event.target).parent().attr("id"));
+      $(event.target).parent().html('<i class="fa-solid fa-clone"></i><span class="tooltiptext">Copied!</span>');
+      console.log(elementID);
     } else {
       $(event.target).html('<i class="fa-solid fa-clone"></i><span class="tooltiptext">Copied!</span>');
       elementID = ($(event.target).attr("id"));
+      console.log(elementID);
     }
     const passwordID = elementID.slice('copy-password-'.length);
     if (window.isSecureMode && $(`#password-entry-${passwordID}`).html().includes('●')) return;

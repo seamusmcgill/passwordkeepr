@@ -31,14 +31,15 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
   router.post("/", (req, res) => {
     const newPasswordObject = req.body;
-    const parameters = [`${newPasswordObject.service_name}`, `${newPasswordObject.service_url}`, `${newPasswordObject.login_username}`, `${newPasswordObject.login_password}`, `${newPasswordObject.description}`];
+    const parameters = [`${req.session.organizationId}`, `${req.session.userId}`, `${newPasswordObject.service_name}`, `${newPasswordObject.service_url}`, `${newPasswordObject.login_username}`, `${newPasswordObject.login_password}`, `${newPasswordObject.description}`, `${newPasswordObject.category_id}`];
     db.query(`
     INSERT INTO passwords
-      (organization_id, creator_id, service_name, service_url, login_username, login_password, description)
+      (organization_id, creator_id, service_name, service_url, login_username, login_password, description, category_id)
     VALUES
-      (1, 1, $1, $2, $3, $4, $5)
+      ($1, $2, $3, $4, $5, $6, $7, $8)
     RETURNING
       *;
     `, parameters)
@@ -73,8 +74,9 @@ module.exports = (db) => {
     let username = req.body.login_username;
     let password = req.body.login_password;
     let description = req.body.description;
+    let category_id = req.body.category_id;
     db.query(`UPDATE passwords
-    SET login_username = '${username}', login_password = '${password}', description = '${description}'
+    SET login_username = '${username}', login_password = '${password}', description = '${description}', category_id = '${category_id}'
     WHERE id = ${req.body.id};`)
       .then(data => {
         const passwords = data.rows;

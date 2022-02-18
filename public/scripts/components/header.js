@@ -27,6 +27,7 @@ $(document).ready(function() {
       </ul>
       <ul>
           <li><a id="secureMode" href="#" class="tooltip"><i class="fa-solid fa-lock-open"></i></a></li>
+          <li><a id="newCategoryLink" href="#">+Category</a></li>
           <li>${user.name}</li>
           <li><img src="${user.logo_url}"></li>
           <li><a id="logOutButton" href="#">Logout</a></li>
@@ -66,7 +67,7 @@ $(document).ready(function() {
     viewsManager.show('newCategory');
   });
 
-  $navBar.on('click', '#newPasswordLink', (event) => {
+  $(document).on('click', '#newPasswordLink', (event) => {
     event.preventDefault();
     viewsManager.show('newPassword');
   });
