@@ -37,13 +37,24 @@ $(() => {
   $(document).on('click', "[id^='filter-category-']", (event) => {
     const target = $(event.target);
     const id = target.attr('id');
-    if (window.id) {
-      window.id = false;
+    if (window.categoryOn) {
+      if (window.categoryCurrent[0] !== id) {
+        $(`#${window.categoryCurrent[0]}`).css('background-color', '');
+        window.categoryCurrent = [id];
+        target.css('background-color', '#e53935');
+        const value = $(event.target).html();
+        $('.table-row').hide();
+        $('.table-row').has("td:contains(" + value + ")").show();
+        return;
+      }
       target.css('background-color', '');
+      window.categoryOn = false;
+      window.categoryCurrent = [];
       $('.table-row').show();
       return;
     }
-    window.id = true;
+    window.categoryOn = true;
+    window.categoryCurrent = [id];
     target.css('background-color', '#e53935');
     const value = $(event.target).html();
     $('.table-row').hide();
