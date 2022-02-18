@@ -2,10 +2,9 @@
 $(document).ready(function() {
 
   const $newCategoryHTML = $(`
-  <div>
+
+  <div class="createCategoryNew" >
   <h1>Create category</h1>
-  </div>
-  <div>
   <form id="newCategoryForm">
   <label for="category_name">Name:</label>
   <input id="category_name" name="category_name" placeholder="Enter name of category">
