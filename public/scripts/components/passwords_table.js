@@ -57,7 +57,7 @@ $(document).ready(function() {
       <td>
         <a id="edit-password-${password.id}" href="#">Edit</a>
       </td>
-      <td id="copy-password-${password.id}"><i class="fa-solid fa-clone"></i></td>
+      <td id="copy-password-${password.id}" class="tooltip"><i class="fa-solid fa-clone"></i><span class="tooltiptext">Copy Password</span></td>
     </tr>
     `;
     return passwordHTML;
@@ -66,11 +66,13 @@ $(document).ready(function() {
   window.passwords.createPasswordElement = createPasswordElement;
 
   $('body').on('click', "[id^='copy-password-']", (event => {
-
+    $('.tooltiptext').html('Copy Password');
     let elementID;
     if (!($(event.target).attr("id"))) {
+      $(event.target).parent().html('<i class="fa-solid fa-clone"></i><span class="tooltiptext">Copied!</span>');
       elementID = ($(event.target).parent().attr("id"));
     } else {
+      $(event.target).html('<i class="fa-solid fa-clone"></i><span class="tooltiptext">Copied!</span>');
       elementID = ($(event.target).attr("id"));
     }
     const passwordID = elementID.slice('copy-password-'.length);

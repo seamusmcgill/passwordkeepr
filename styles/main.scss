@@ -94,7 +94,6 @@ nav  img {
   font-family: 'Arvo', serif;
 }
 
-
 .secure-mode-popup {
   position: absolute;
   top:25%;
@@ -104,6 +103,34 @@ nav  img {
   font-weight: 600;
   background-color: #000000;
   padding: 1.5em 1.5em;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  display: inline-block;
+  width: 230%;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 5px;
+  font-size: 14px;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  bottom: 90%;
+  right: -50%;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }
 
 // .label{
