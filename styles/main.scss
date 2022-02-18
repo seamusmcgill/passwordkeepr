@@ -127,7 +127,6 @@ figure {
   top:25%;
   left:50%;
   transform:translate(-50%,-50%);
-  font-family: 'JetBrains Mono', monospace;
   font-weight: 600;
   background-color: #000000;
   padding: 1.5em 1.5em;
@@ -136,7 +135,6 @@ figure {
 .tooltip {
   position: relative;
   display: inline-block;
-  border-bottom: 1px dotted black;
 }
 
 .tooltip .tooltiptext {
@@ -157,8 +155,30 @@ figure {
   right: -50%;
 }
 
+.tooltip .tooltiptext.nav-version {
+  visibility: hidden;
+  display: inline-block;
+  width: 420%;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 5px;
+  font-size: 16px;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+  bottom: 20%;
+  right: 100%;
+}
+
 .tooltip:hover .tooltiptext {
   visibility: visible;
+}
+
+.fa-lock, .fa-lock-open {
+  font-size: 28px;
 }
 
 // .label{

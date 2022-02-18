@@ -26,14 +26,10 @@ $(document).ready(function() {
         <li><a id="homepage" href="#">PasswordKeepR</a></li>
       </ul>
       <ul>
-          <li><a id="secureMode" href="#"><i class="fa-solid fa-lock-open"></i></a></li>
-          <li><a id="newCategoryLink" href="#">+Category</a></li>
-          <li><a id="newPasswordLink" href="#">+Password</a></li>
-          <li><a id="logOutButton" href="#">Logout</a></li>
-      </ul>
-      <ul>
+          <li><a id="secureMode" href="#" class="tooltip"><i class="fa-solid fa-lock-open"></i></a></li>
           <li>${user.name}</li>
           <li><img src="${user.logo_url}"></li>
+          <li><a id="logOutButton" href="#">Logout</a></li>
       </ul>
       `;
     }
@@ -91,6 +87,14 @@ $(document).ready(function() {
       });
   });
 
+  $('body').on('mouseenter', '#secureMode', function() {
+    $(this).html('<i class="fa-solid fa-lock"></i>');
+  });
+
+  $('body').on('mouseleave', '#secureMode', function() {
+    if (!window.isSecureMode) $(this).html('<i class="fa-solid fa-lock-open"></i>');
+  });
+
   $('body').on('click', '#secureMode', (event => {
     event.preventDefault();
     // If secure mode is on
@@ -111,9 +115,8 @@ $(document).ready(function() {
     // toggle isSecureMode on window object
     window.isSecureMode ? window.isSecureMode = false : window.isSecureMode = true;
 
-    const header = $('#secureMode').html();
-    if ($('#secureMode').html() === '<i class="fa-solid fa-lock-open"></i>' ) $('#secureMode').html(`<i class="fa-solid fa-lock"></i>`);
-    else $('#secureMode').html(`<i class="fa-solid fa-lock-open"></i>`);
+    if ($('#secureMode').html() === '<i class="fa-solid fa-lock-open"></i>') $('#secureMode').html(`<i class="fa-solid fa-lock-open"></i>`);
+    else $('#secureMode').html(`<i class="fa-solid fa-lock"></i>`);
     // render passwords table page
     getCurrentUser()
       .then((json) => {
