@@ -102,8 +102,8 @@ $(document).ready(function() {
       $('.secure-mode-popup').remove();
       const authentication = `
       <div class="secure-mode-popup">
-      <h4>TURN SECURE MODE OFF<h4>
       <p class="close-window">x</p>
+      <h4>Turn Secure Mode Off<h4>
       <input id="secure-mode-auth-input" name="secure-mode-auth-input" type="password" placeholder="Enter your password">
       <button id="secure-mode-off-auth-button" type=button>Verify</button>
       </div>

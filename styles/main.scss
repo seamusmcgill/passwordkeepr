@@ -17,6 +17,10 @@ label {
   display:none;
 }
 
+.close-window {
+  cursor: pointer;
+}
+
 .createPasswordNew{
   display: flex;
     flex-direction: column;

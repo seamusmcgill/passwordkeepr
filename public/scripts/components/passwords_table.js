@@ -99,7 +99,7 @@ $(document).ready(function() {
     const authentication = `
     <div class="secure-mode-popup">
     <p class="close-window">x</p>
-    <h4>REVEAL PASSWORD</h4>
+    <h4>Reveal Password</h4>
     <input id="secure-mode-auth-input" name="secure-mode-auth-input" type="password" placeholder="Enter your password">
     <button id="secure-mode-auth-button-${passwordID}" type=button>Verify</button>
     </div>
